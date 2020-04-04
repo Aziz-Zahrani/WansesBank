@@ -92,13 +92,13 @@ public class EmployeeFrame extends javax.swing.JFrame {
         CheckInformationPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        customerFirstNameDEL = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         customerIDFieldDEL = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        customerFirstNameDEL = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jLabel6 = new javax.swing.JLabel();
         employeePasswordDEL = new javax.swing.JPasswordField();
         deleteButton = new javax.swing.JButton();
         jLayeredPane2 = new javax.swing.JLayeredPane();
@@ -135,44 +135,44 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         CheckInformationPanel.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 10, 650, 510);
-
-        jLayeredPane1.add(CheckInformationPanel);
-        CheckInformationPanel.setBounds(10, 20, 680, 530);
-
-        jPanel2.setLayout(null);
+        jScrollPane1.setBounds(10, 10, 650, 380);
 
         jLabel4.setText("Customer ID :");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(60, 40, 80, 16);
-
-        jToggleButton1.setText("DELETE CUSTOMER");
-        jPanel2.add(jToggleButton1);
-        jToggleButton1.setBounds(220, 500, 140, 32);
-
-        customerFirstNameDEL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerFirstNameDELActionPerformed(evt);
-            }
-        });
-        jPanel2.add(customerFirstNameDEL);
-        customerFirstNameDEL.setBounds(500, 30, 100, 30);
-
-        jLabel5.setText("Customer Firstname  : ");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(360, 40, 150, 16);
-
-        jLabel6.setText("Employee Password  : ");
-        jPanel2.add(jLabel6);
-        jLabel6.setBounds(180, 120, 130, 16);
+        CheckInformationPanel.add(jLabel4);
+        jLabel4.setBounds(80, 460, 80, 16);
 
         customerIDFieldDEL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customerIDFieldDELActionPerformed(evt);
             }
         });
-        jPanel2.add(customerIDFieldDEL);
-        customerIDFieldDEL.setBounds(150, 30, 100, 30);
+        CheckInformationPanel.add(customerIDFieldDEL);
+        customerIDFieldDEL.setBounds(170, 450, 100, 30);
+
+        jLabel5.setText("Customer Firstname  : ");
+        CheckInformationPanel.add(jLabel5);
+        jLabel5.setBounds(380, 460, 150, 16);
+
+        customerFirstNameDEL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerFirstNameDELActionPerformed(evt);
+            }
+        });
+        CheckInformationPanel.add(customerFirstNameDEL);
+        customerFirstNameDEL.setBounds(520, 450, 100, 30);
+
+        jLayeredPane1.add(CheckInformationPanel);
+        CheckInformationPanel.setBounds(10, 20, 680, 530);
+
+        jPanel2.setLayout(null);
+
+        jToggleButton1.setText("DELETE CUSTOMER");
+        jPanel2.add(jToggleButton1);
+        jToggleButton1.setBounds(220, 500, 140, 32);
+
+        jLabel6.setText("Employee Password  : ");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(180, 120, 130, 16);
 
         employeePasswordDEL.setText("jPasswordField1");
         jPanel2.add(employeePasswordDEL);
