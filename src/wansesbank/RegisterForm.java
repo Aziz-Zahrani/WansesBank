@@ -19,6 +19,8 @@ public class RegisterForm extends javax.swing.JDialog {
         initComponents();
     }
 
+   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,12 +42,12 @@ public class RegisterForm extends javax.swing.JDialog {
         incomelabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        checkingbox = new javax.swing.JCheckBox();
-        savingbox = new javax.swing.JCheckBox();
-        accountlabel = new javax.swing.JLabel();
         registerbutton = new javax.swing.JButton();
         cancelbutton = new javax.swing.JButton();
+        jTextField4 = new javax.swing.JTextField();
+        fullname1 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Register Form");
@@ -53,55 +55,39 @@ public class RegisterForm extends javax.swing.JDialog {
 
         jPanel1.setLayout(null);
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(110, 40, 190, 24);
+        jTextField1.setBounds(110, 20, 190, 24);
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(110, 70, 190, 24);
+        jTextField2.setBounds(110, 50, 190, 24);
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(110, 100, 190, 24);
+        jTextField3.setBounds(110, 80, 190, 24);
         jPanel1.add(jTextField5);
-        jTextField5.setBounds(140, 160, 160, 24);
+        jTextField5.setBounds(140, 170, 160, 24);
         jPanel1.add(jTextField6);
-        jTextField6.setBounds(110, 130, 190, 24);
+        jTextField6.setBounds(110, 140, 190, 24);
 
         userlabel.setText("Username:");
         jPanel1.add(userlabel);
-        userlabel.setBounds(40, 40, 62, 25);
+        userlabel.setBounds(40, 20, 62, 25);
 
         passlabel.setText("Password:");
         jPanel1.add(passlabel);
-        passlabel.setBounds(40, 70, 61, 25);
+        passlabel.setBounds(40, 50, 61, 25);
 
-        fullname.setText("Full Name:");
+        fullname.setText("First Name:");
         jPanel1.add(fullname);
-        fullname.setBounds(40, 100, 70, 25);
+        fullname.setBounds(40, 80, 70, 25);
 
         incomelabel.setText("Yearly Income* :");
         jPanel1.add(incomelabel);
-        incomelabel.setBounds(40, 190, 91, 25);
+        incomelabel.setBounds(40, 200, 91, 25);
 
         jLabel5.setText("Phone Number:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(40, 160, 87, 25);
+        jLabel5.setBounds(40, 170, 87, 25);
 
         jLabel6.setText("Address:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(40, 130, 51, 25);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not interested.", "Below 5000 SAR", "6000-15000 SAR", "16000-35000 SAR", "35000 SAR and ABOVE" }));
-        jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(140, 190, 160, 26);
-
-        checkingbox.setText("Checking Account");
-        jPanel1.add(checkingbox);
-        checkingbox.setBounds(140, 230, 140, 20);
-
-        savingbox.setText("Saving Account");
-        jPanel1.add(savingbox);
-        savingbox.setBounds(140, 250, 140, 20);
-
-        accountlabel.setText("Open a:");
-        jPanel1.add(accountlabel);
-        accountlabel.setBounds(40, 230, 70, 25);
+        jLabel6.setBounds(40, 140, 51, 25);
 
         registerbutton.setText("Register");
         registerbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -113,8 +99,26 @@ public class RegisterForm extends javax.swing.JDialog {
         registerbutton.setBounds(40, 290, 110, 32);
 
         cancelbutton.setText("Cancel");
+        cancelbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelbuttonActionPerformed(evt);
+            }
+        });
         jPanel1.add(cancelbutton);
         cancelbutton.setBounds(190, 290, 110, 32);
+        jPanel1.add(jTextField4);
+        jTextField4.setBounds(110, 110, 190, 24);
+
+        fullname1.setText("First Name:");
+        jPanel1.add(fullname1);
+        fullname1.setBounds(40, 110, 70, 25);
+        jPanel1.add(jTextField7);
+        jTextField7.setBounds(140, 200, 160, 24);
+
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setText("<html>"+"Checking and saving accounts will be made for this customer"+"</html>");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(50, 240, 250, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,6 +139,10 @@ public class RegisterForm extends javax.swing.JDialog {
         
     }//GEN-LAST:event_registerbuttonActionPerformed
 
+    private void cancelbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbuttonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelbuttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -146,7 +154,7 @@ public class RegisterForm extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -178,23 +186,23 @@ public class RegisterForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel accountlabel;
     private javax.swing.JButton cancelbutton;
-    private javax.swing.JCheckBox checkingbox;
     private javax.swing.JLabel fullname;
+    private javax.swing.JLabel fullname1;
     private javax.swing.JLabel incomelabel;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel passlabel;
     private javax.swing.JButton registerbutton;
-    private javax.swing.JCheckBox savingbox;
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables
 }

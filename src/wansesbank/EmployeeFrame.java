@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils; //check the rs2xml.jar file + i've imported that file (Done) "i used this for the JTable mainly"
 import javax.swing.JScrollPane;
 
@@ -72,10 +73,9 @@ public class EmployeeFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        //user.setUsername(username);
 
         initComponents();
-
+        
     }
 
     /**
@@ -96,11 +96,6 @@ public class EmployeeFrame extends javax.swing.JFrame {
         customerIDFieldDEL = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         customerFirstNameDEL = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jLabel6 = new javax.swing.JLabel();
-        employeePasswordDEL = new javax.swing.JPasswordField();
-        deleteButton = new javax.swing.JButton();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
         signoutlabel = new javax.swing.JButton();
@@ -132,14 +127,15 @@ public class EmployeeFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jTable1);
 
         CheckInformationPanel.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 10, 650, 380);
+        jScrollPane1.setBounds(40, 110, 650, 430);
 
         jLabel4.setText("Customer ID :");
         CheckInformationPanel.add(jLabel4);
-        jLabel4.setBounds(80, 460, 80, 16);
+        jLabel4.setBounds(80, 40, 80, 25);
 
         customerIDFieldDEL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,11 +143,11 @@ public class EmployeeFrame extends javax.swing.JFrame {
             }
         });
         CheckInformationPanel.add(customerIDFieldDEL);
-        customerIDFieldDEL.setBounds(170, 450, 100, 30);
+        customerIDFieldDEL.setBounds(160, 40, 100, 25);
 
         jLabel5.setText("Customer Firstname  : ");
         CheckInformationPanel.add(jLabel5);
-        jLabel5.setBounds(380, 460, 150, 16);
+        jLabel5.setBounds(360, 40, 130, 25);
 
         customerFirstNameDEL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,36 +155,10 @@ public class EmployeeFrame extends javax.swing.JFrame {
             }
         });
         CheckInformationPanel.add(customerFirstNameDEL);
-        customerFirstNameDEL.setBounds(520, 450, 100, 30);
+        customerFirstNameDEL.setBounds(490, 40, 100, 25);
 
         jLayeredPane1.add(CheckInformationPanel);
-        CheckInformationPanel.setBounds(10, 20, 680, 530);
-
-        jPanel2.setLayout(null);
-
-        jToggleButton1.setText("DELETE CUSTOMER");
-        jPanel2.add(jToggleButton1);
-        jToggleButton1.setBounds(220, 500, 140, 32);
-
-        jLabel6.setText("Employee Password  : ");
-        jPanel2.add(jLabel6);
-        jLabel6.setBounds(180, 120, 130, 16);
-
-        employeePasswordDEL.setText("jPasswordField1");
-        jPanel2.add(employeePasswordDEL);
-        employeePasswordDEL.setBounds(320, 110, 100, 30);
-
-        deleteButton.setText("DELETE");
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(deleteButton);
-        deleteButton.setBounds(260, 190, 73, 32);
-
-        jLayeredPane1.add(jPanel2);
-        jPanel2.setBounds(20, 550, 700, 280);
+        CheckInformationPanel.setBounds(10, -10, 730, 580);
 
         MainCenterPane.add(jLayeredPane1);
         jLayeredPane1.setBounds(190, 10, 730, 840);
@@ -248,7 +218,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jButton1.setBounds(10, 230, 140, 32);
 
         jLayeredPane2.add(jPanel1);
-        jPanel1.setBounds(0, 0, 200, 620);
+        jPanel1.setBounds(0, 0, 200, 530);
 
         MainCenterPane.add(jLayeredPane2);
         jLayeredPane2.setBounds(0, 0, 200, 620);
@@ -263,40 +233,35 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
         this.dispose();
         WansesLogin a = new WansesLogin();
+        a.setLocationRelativeTo(this);
         a.setVisible(true);
-
+       
     }//GEN-LAST:event_signoutlabelActionPerformed
 
     private void addbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbuttonActionPerformed
-        // TODO add your handling code here:
-        
+    RegisterForm b= new RegisterForm(null, true);
+    b.setLocationRelativeTo(this);
+    b.setVisible(true);  
     }//GEN-LAST:event_addbuttonActionPerformed
 
     private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_deletebuttonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-             try {
+        int column=0;
+        int row= jTable1.getSelectedRow();
+        int valueid= (int)jTable1.getValueAt(row, column);
+                     try {
                 Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
                 Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery("SELECT CUST_ID,FIRSTNAME,LASTNAME,USERNAME,MEMBERSHIP,INCOME FROM CUSTOMER");
-                //add(new JScrollPane(jTable1));   
-            
-            ResultSetMetaData meta = resultset.getMetaData();
-            jTable1.setModel(DbUtils.resultSetToTableModel(resultset));
-            
-
+                statement.executeUpdate("DELETE FROM ACCOUNT WHERE CUST_ID="+valueid+" AND (ACCTYPE=1 OR ACCTYPE=2)");
+                statement.executeUpdate("DELETE FROM CUSTOMER WHERE CUST_ID="+valueid);
         } catch (SQLException e) {
             System.out.println(e);
         }
-        //user.setUsername(username);
+        updateTable();
+        
+    }//GEN-LAST:event_deletebuttonActionPerformed
 
-        initComponents();
-
-    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        updateTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void customerFirstNameDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerFirstNameDELActionPerformed
@@ -306,23 +271,6 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private void customerIDFieldDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerIDFieldDELActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_customerIDFieldDELActionPerformed
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
-               try {
-                   
-                Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
-                Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery("SELECT CUST_ID,FIRSTNAME CUSTOMER WHERE CUST_ID ="+customerIDFieldDEL+" FIRSTNAME= '"+customerFirstNameDEL+"'");
-                  
-
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        //user.setUsername(username);
-
-        initComponents();
-    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,7 +283,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -367,24 +315,35 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JButton addbutton;
     private javax.swing.JTextField customerFirstNameDEL;
     private javax.swing.JTextField customerIDFieldDEL;
-    private javax.swing.JButton deleteButton;
     private javax.swing.JButton deletebutton;
-    private javax.swing.JPasswordField employeePasswordDEL;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton signoutlabel;
     private javax.swing.JButton updatebutton;
     // End of variables declaration//GEN-END:variables
+
+    private void updateTable() {
+                     try {
+                Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+                Statement statement = connection.createStatement();
+                ResultSet resultset = statement.executeQuery("SELECT CUST_ID,FIRSTNAME,LASTNAME,USERNAME,MEMBERSHIP,INCOME FROM CUSTOMER");
+                //add(new JScrollPane(jTable1));   
+            
+            ResultSetMetaData meta = resultset.getMetaData();
+            jTable1.setModel(DbUtils.resultSetToTableModel(resultset));
+            
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }
