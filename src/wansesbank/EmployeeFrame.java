@@ -14,6 +14,10 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils; //check the rs2xml.jar file + i've imported that file (Done) "i used this for the JTable mainly"
 import javax.swing.JScrollPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -21,12 +25,12 @@ import javax.swing.JScrollPane;
  */
 public class EmployeeFrame extends javax.swing.JFrame {
 
-    private static final String USERNAME = "sql7330374";
-    private static final String PASSWORD = "1Tlj6f1nkB";
-    private static final String CONN_STRING = "jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7330374";
+    private static final String USERNAME= "wansesco_wans";
+    private static final String PASSWORD= "xzMAsW1WQ8Lg";
+    private static final String CONN_STRING= "jdbc:mysql://wanses.com:3306/wansesco_wanses";
     String[] empRoles = {"Accountant", "Security & Fraud Specialist", "Trader", "Fund Manager", "Business Technology Specialist"};
     String myEmpRole;
-
+    private TableModel model;
     Employee user = new Employee();
 
     /**
@@ -93,9 +97,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        customerIDFieldDEL = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        customerFirstNameDEL = new javax.swing.JTextField();
+        filterfield = new javax.swing.JTextField();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
         signoutlabel = new javax.swing.JButton();
@@ -131,31 +133,19 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         CheckInformationPanel.add(jScrollPane1);
-        jScrollPane1.setBounds(40, 110, 650, 430);
+        jScrollPane1.setBounds(30, 120, 650, 430);
 
-        jLabel4.setText("Customer ID :");
+        jLabel4.setText("Find: ");
         CheckInformationPanel.add(jLabel4);
-        jLabel4.setBounds(80, 40, 80, 25);
+        jLabel4.setBounds(500, 80, 40, 25);
 
-        customerIDFieldDEL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerIDFieldDELActionPerformed(evt);
+        filterfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                filterfieldKeyReleased(evt);
             }
         });
-        CheckInformationPanel.add(customerIDFieldDEL);
-        customerIDFieldDEL.setBounds(160, 40, 100, 25);
-
-        jLabel5.setText("Customer Firstname  : ");
-        CheckInformationPanel.add(jLabel5);
-        jLabel5.setBounds(360, 40, 130, 25);
-
-        customerFirstNameDEL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerFirstNameDELActionPerformed(evt);
-            }
-        });
-        CheckInformationPanel.add(customerFirstNameDEL);
-        customerFirstNameDEL.setBounds(490, 40, 100, 25);
+        CheckInformationPanel.add(filterfield);
+        filterfield.setBounds(540, 80, 130, 25);
 
         jLayeredPane1.add(CheckInformationPanel);
         CheckInformationPanel.setBounds(10, -10, 730, 580);
@@ -264,13 +254,10 @@ public class EmployeeFrame extends javax.swing.JFrame {
         updateTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void customerFirstNameDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerFirstNameDELActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_customerFirstNameDELActionPerformed
-
-    private void customerIDFieldDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerIDFieldDELActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_customerIDFieldDELActionPerformed
+    private void filterfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filterfieldKeyReleased
+        String a= filterfield.getText();
+        filter(a);
+    }//GEN-LAST:event_filterfieldKeyReleased
 
     /**
      * @param args the command line arguments
@@ -313,15 +300,13 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JPanel CheckInformationPanel;
     private javax.swing.JPanel MainCenterPane;
     private javax.swing.JButton addbutton;
-    private javax.swing.JTextField customerFirstNameDEL;
-    private javax.swing.JTextField customerIDFieldDEL;
     private javax.swing.JButton deletebutton;
+    private javax.swing.JTextField filterfield;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
@@ -335,15 +320,23 @@ public class EmployeeFrame extends javax.swing.JFrame {
                      try {
                 Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
                 Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery("SELECT CUST_ID,FIRSTNAME,LASTNAME,USERNAME,MEMBERSHIP,INCOME FROM CUSTOMER");
+                ResultSet resultset = statement.executeQuery("SELECT CUST_ID,FIRSTNAME,LASTNAME,USERNAME,PASSWORD,PHONENUMBER,INCOME FROM CUSTOMER");
                 //add(new JScrollPane(jTable1));   
             
             ResultSetMetaData meta = resultset.getMetaData();
-            jTable1.setModel(DbUtils.resultSetToTableModel(resultset));
+            model = DbUtils.resultSetToTableModel(resultset);
+            jTable1.setModel(model);
             
 
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    private void filter(String a) {
+       TableRowSorter<DefaultTableModel> sorter= new TableRowSorter<>((DefaultTableModel) model);
+       jTable1.setRowSorter(sorter);
+       
+       sorter.setRowFilter(RowFilter.regexFilter(a));
     }
 }

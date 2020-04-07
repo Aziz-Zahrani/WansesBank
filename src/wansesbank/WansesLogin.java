@@ -26,9 +26,9 @@ public class WansesLogin extends javax.swing.JFrame {
     /**
      * Creates new form WansesFrame
      */
-    private static final String USERNAME = "sql7330374";
-    private static final String PASSWORD = "1Tlj6f1nkB";
-    private static final String CONN_STRING = "jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7330374";
+    private static  final String USERNAME= "wansesco_wans";
+    private static final String PASSWORD= "xzMAsW1WQ8Lg";
+    private static final String CONN_STRING= "jdbc:mysql://wanses.com:3306/wansesco_wanses";
 //public String myname;
 
     public WansesLogin() {

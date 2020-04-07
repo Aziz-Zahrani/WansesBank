@@ -15,9 +15,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Wans
  */
 public class SummaryFrame extends javax.swing.JFrame {
-    private static  final String USERNAME= "wans";
-    private static final String PASSWORD= "123";
-    private static final String CONN_STRING= "jdbc:derby://localhost:1527/wanses";
+    private static  final String USERNAME= "wansesco_wans";
+    private static final String PASSWORD= "xzMAsW1WQ8Lg";
+    private static final String CONN_STRING= "jdbc:mysql://wanses.com:3306/wansesco_wanses";
     /**
      * Creates new form SummaryFrame
      */public void initSummary(int Checking_ID,int Saving_ID){
@@ -28,8 +28,11 @@ public class SummaryFrame extends javax.swing.JFrame {
             //ResultSetMetaData meta = resultset.getMetaData();
             String []data= new String[6];
             DefaultTableModel fullmodel = (DefaultTableModel)fullsummary.getModel();
-            resultset.next();
+            
+             
+         
             for (int i = 0; i < 20; i++) {
+                if(resultset.next()){
                     data[0]= resultset.getString(1);
                     data[1]= resultset.getString(2);
                     data[2]= String.format("%.2f",resultset.getDouble(3));
@@ -37,12 +40,12 @@ public class SummaryFrame extends javax.swing.JFrame {
                     data[4]= resultset.getString(5);
                     data[5]= resultset.getString(6);
                     fullmodel.addRow(data);
-                    if(!resultset.next())
-                        break;
-        }
-            
+        }else
+                    break;
+            }
   
         } catch (SQLException e) {
+             System.out.println("mow");
             System.out.println(e);
         }
      }
