@@ -45,12 +45,12 @@ public class WansesLogin extends javax.swing.JFrame {
         container = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         LoginPanel = new javax.swing.JPanel();
-        passfield = new javax.swing.JTextField();
         usernamefield = new javax.swing.JTextField();
         passlabel = new javax.swing.JLabel();
         userlabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        passfield = new javax.swing.JPasswordField();
         RegisterPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         userlabel1 = new javax.swing.JLabel();
@@ -91,18 +91,12 @@ public class WansesLogin extends javax.swing.JFrame {
         LoginPanel.setBackground(new java.awt.Color(240, 240, 240));
         LoginPanel.setLayout(null);
 
-        passfield.setForeground(new java.awt.Color(95, 108, 133));
-        passfield.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                passfieldKeyPressed(evt);
-            }
-        });
-        LoginPanel.add(passfield);
-        passfield.setBounds(110, 240, 221, 24);
-
         usernamefield.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 usernamefieldKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usernamefieldKeyTyped(evt);
             }
         });
         LoginPanel.add(usernamefield);
@@ -133,6 +127,14 @@ public class WansesLogin extends javax.swing.JFrame {
         LoginPanel.add(jLabel7);
         jLabel7.setBounds(180, 360, 80, 16);
 
+        passfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                passfieldKeyTyped(evt);
+            }
+        });
+        LoginPanel.add(passfield);
+        passfield.setBounds(110, 240, 220, 22);
+
         jLayeredPane1.add(LoginPanel);
         LoginPanel.setBounds(0, 0, 440, 470);
 
@@ -147,8 +149,20 @@ public class WansesLogin extends javax.swing.JFrame {
         userlabel1.setText("Username:");
         jPanel2.add(userlabel1);
         userlabel1.setBounds(70, 45, 62, 25);
+
+        regusername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                regusernameKeyTyped(evt);
+            }
+        });
         jPanel2.add(regusername);
         regusername.setBounds(140, 45, 190, 24);
+
+        regpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                regpasswordKeyTyped(evt);
+            }
+        });
         jPanel2.add(regpassword);
         regpassword.setBounds(140, 80, 190, 24);
 
@@ -171,6 +185,12 @@ public class WansesLogin extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(240, 240, 240));
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(237, 237, 237)));
         jPanel3.setLayout(null);
+
+        regphonenumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                regphonenumberKeyTyped(evt);
+            }
+        });
         jPanel3.add(regphonenumber);
         regphonenumber.setBounds(130, 125, 110, 24);
 
@@ -183,10 +203,28 @@ public class WansesLogin extends javax.swing.JFrame {
         incomelabel.setText("Yearly Income* :");
         jPanel3.add(incomelabel);
         incomelabel.setBounds(40, 165, 91, 25);
+
+        regincome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                regincomeKeyTyped(evt);
+            }
+        });
         jPanel3.add(regincome);
         regincome.setBounds(130, 165, 110, 24);
+
+        regaddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                regaddressKeyTyped(evt);
+            }
+        });
         jPanel3.add(regaddress);
         regaddress.setBounds(90, 85, 310, 24);
+
+        reglastname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                reglastnameKeyTyped(evt);
+            }
+        });
         jPanel3.add(reglastname);
         reglastname.setBounds(290, 45, 110, 24);
 
@@ -194,6 +232,12 @@ public class WansesLogin extends javax.swing.JFrame {
         reglastnamelabel.setText("Last Name:");
         jPanel3.add(reglastnamelabel);
         reglastnamelabel.setBounds(230, 45, 70, 25);
+
+        regfirstname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                regfirstnameKeyTyped(evt);
+            }
+        });
         jPanel3.add(regfirstname);
         regfirstname.setBounds(110, 45, 110, 24);
 
@@ -404,11 +448,58 @@ public class WansesLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_usernamefieldKeyPressed
 
-    private void passfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passfieldKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            jButton1.doClick();
-        }
-    }//GEN-LAST:event_passfieldKeyPressed
+    private void regusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_regusernameKeyTyped
+                if (regusername.getText().length() >= 20 || evt.getKeyChar()==KeyEvent.VK_SPACE)
+                evt.consume();
+                if (!(Character.isLetterOrDigit(evt.getKeyChar()) || evt.getKeyChar() == KeyEvent.VK_BACK_SPACE || evt.getKeyChar() == KeyEvent.VK_DELETE || evt.getKeyChar() == KeyEvent.VK_UNDERSCORE )) 
+                evt.consume();
+
+    }//GEN-LAST:event_regusernameKeyTyped
+
+    private void regpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_regpasswordKeyTyped
+                if (regpassword.getText().length() >= 20)
+                evt.consume();
+    }//GEN-LAST:event_regpasswordKeyTyped
+
+    private void regfirstnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_regfirstnameKeyTyped
+                if (regfirstname.getText().length() >= 25 || evt.getKeyChar()==KeyEvent.VK_SPACE)
+                evt.consume();
+    }//GEN-LAST:event_regfirstnameKeyTyped
+
+    private void reglastnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_reglastnameKeyTyped
+                if (reglastname.getText().length() >= 25 || evt.getKeyChar()==KeyEvent.VK_SPACE)
+                evt.consume();
+    }//GEN-LAST:event_reglastnameKeyTyped
+
+    private void regaddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_regaddressKeyTyped
+                if (regaddress.getText().length() >= 40)
+                evt.consume();
+    }//GEN-LAST:event_regaddressKeyTyped
+
+    private void regphonenumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_regphonenumberKeyTyped
+                if (regphonenumber.getText().length() >= 10 || evt.getKeyChar()==KeyEvent.VK_SPACE)
+                evt.consume();
+                if (!(Character.isDigit(evt.getKeyChar()) || evt.getKeyChar() == KeyEvent.VK_BACK_SPACE || evt.getKeyChar() == KeyEvent.VK_DELETE )) 
+                evt.consume();
+
+    }//GEN-LAST:event_regphonenumberKeyTyped
+
+    private void regincomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_regincomeKeyTyped
+                if (regincome.getText().length() >= 10 )
+                evt.consume();
+                if (!(Character.isDigit(evt.getKeyChar()) || evt.getKeyChar() == KeyEvent.VK_BACK_SPACE || evt.getKeyChar() == KeyEvent.VK_DELETE || evt.getKeyChar() == KeyEvent.VK_PERIOD )) 
+            evt.consume();
+    }//GEN-LAST:event_regincomeKeyTyped
+
+    private void usernamefieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernamefieldKeyTyped
+                if (usernamefield.getText().length() >= 20)
+                evt.consume();
+    }//GEN-LAST:event_usernamefieldKeyTyped
+
+    private void passfieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passfieldKeyTyped
+                if (passfield.getText().length() >= 20)
+                    evt.consume();
+    }//GEN-LAST:event_passfieldKeyTyped
 
     /**
      * @param args the command line arguments
@@ -470,7 +561,7 @@ public class WansesLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField passfield;
+    private javax.swing.JPasswordField passfield;
     private javax.swing.JLabel passlabel;
     private javax.swing.JLabel passlabel1;
     private javax.swing.JTextField regaddress;

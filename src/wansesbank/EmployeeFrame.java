@@ -38,6 +38,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
      */
     public EmployeeFrame() {
         initComponents();
+        updateTable();
     }
 
     public EmployeeFrame(String username, String password) {
@@ -79,7 +80,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         }
 
         initComponents();
-        
+        updateTable();
     }
 
     /**
@@ -92,13 +93,11 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         MainCenterPane = new javax.swing.JPanel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
         CheckInformationPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         filterfield = new javax.swing.JTextField();
-        jLayeredPane2 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
         signoutlabel = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -108,11 +107,12 @@ public class EmployeeFrame extends javax.swing.JFrame {
         deletebutton = new javax.swing.JButton();
         addbutton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Employee Panel");
-        setMinimumSize(new java.awt.Dimension(630, 725));
-        setPreferredSize(new java.awt.Dimension(920, 860));
+        setMinimumSize(new java.awt.Dimension(1000, 540));
+        setPreferredSize(new java.awt.Dimension(1000, 520));
         setResizable(false);
         setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
@@ -133,11 +133,11 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         CheckInformationPanel.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 120, 650, 430);
+        jScrollPane1.setBounds(20, 60, 790, 430);
 
         jLabel4.setText("Find: ");
         CheckInformationPanel.add(jLabel4);
-        jLabel4.setBounds(500, 80, 40, 25);
+        jLabel4.setBounds(640, 20, 40, 25);
 
         filterfield.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -145,13 +145,10 @@ public class EmployeeFrame extends javax.swing.JFrame {
             }
         });
         CheckInformationPanel.add(filterfield);
-        filterfield.setBounds(540, 80, 130, 25);
+        filterfield.setBounds(680, 20, 130, 25);
 
-        jLayeredPane1.add(CheckInformationPanel);
-        CheckInformationPanel.setBounds(10, -10, 730, 580);
-
-        MainCenterPane.add(jLayeredPane1);
-        jLayeredPane1.setBounds(190, 10, 730, 840);
+        MainCenterPane.add(CheckInformationPanel);
+        CheckInformationPanel.setBounds(180, 0, 820, 520);
 
         jPanel1.setLayout(null);
 
@@ -207,14 +204,15 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(10, 230, 140, 32);
 
-        jLayeredPane2.add(jPanel1);
-        jPanel1.setBounds(0, 0, 200, 530);
+        jButton2.setText("Executive panel");
+        jPanel1.add(jButton2);
+        jButton2.setBounds(10, 270, 140, 32);
 
-        MainCenterPane.add(jLayeredPane2);
-        jLayeredPane2.setBounds(0, 0, 200, 620);
+        MainCenterPane.add(jPanel1);
+        jPanel1.setBounds(0, 0, 180, 520);
 
         getContentPane().add(MainCenterPane);
-        MainCenterPane.setBounds(0, 0, 930, 860);
+        MainCenterPane.setBounds(0, 0, 1000, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -235,7 +233,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addbuttonActionPerformed
 
     private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
-        int column=0;
+        if(jTable1.getSelectedRow()!=-1){
+           int column=0;
         int row= jTable1.getSelectedRow();
         int valueid= (int)jTable1.getValueAt(row, column);
                      try {
@@ -246,7 +245,9 @@ public class EmployeeFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        updateTable();
+        updateTable(); 
+        }
+        
         
     }//GEN-LAST:event_deletebuttonActionPerformed
 
@@ -303,12 +304,11 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JButton deletebutton;
     private javax.swing.JTextField filterfield;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -320,13 +320,19 @@ public class EmployeeFrame extends javax.swing.JFrame {
                      try {
                 Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
                 Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery("SELECT CUST_ID,FIRSTNAME,LASTNAME,USERNAME,PASSWORD,PHONENUMBER,INCOME FROM CUSTOMER");
-                //add(new JScrollPane(jTable1));   
+                ResultSet resultset = statement.executeQuery("SELECT DISTINCT C.CUST_ID AS ID,CONCAT(FIRSTNAME,' ',LASTNAME)FULL_NAME,USERNAME,PASSWORD,PHONENUMBER,INCOME,A.BALANCE AS CHECKING ,B.BALANCE AS SAVING\n" +
+"FROM CUSTOMER AS C \n" +
+"INNER JOIN ACCOUNT AS A ON A.CUST_ID=C.CUST_ID AND A.ACCTYPE=1\n" +
+"JOIN ACCOUNT AS B ON B.CUST_ID=C.CUST_ID AND B.ACCTYPE=2");
+                //ResultSet resultset2 = statement.executeQuery("SELECT BALANCE FROM CUSTOMER"); 
             
             ResultSetMetaData meta = resultset.getMetaData();
             model = DbUtils.resultSetToTableModel(resultset);
             jTable1.setModel(model);
-            
+
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(120);
+
 
         } catch (SQLException e) {
             System.out.println(e);
