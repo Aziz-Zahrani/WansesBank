@@ -8,18 +8,23 @@ package wansesbank;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.util.Random;
 import javax.swing.JFrame;
+import net.proteanit.sql.DbUtils;
 
-public class RegisterForm extends javax.swing.JDialog {
+public class EditForm extends javax.swing.JDialog {
     
     private static final String USERNAME= "wansesco_wans";
     private static final String PASSWORD= "xzMAsW1WQ8Lg";
     private static final String CONN_STRING= "jdbc:mysql://wanses.com:3306/wansesco_wanses";
     private final String char_list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_";
+    private int cusid;
+    
+    
     public StringBuilder PasswordGen(){
         Random rand= new Random();
         int RanInt;
@@ -32,14 +37,34 @@ public class RegisterForm extends javax.swing.JDialog {
         return str;
         
     }
-    private RegisterForm(JFrame jFrame, boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void userRetrieve(){
+        try {
+                Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+                Statement statement = connection.createStatement();
+                ResultSet resultset = statement.executeQuery("SELECT  CUST_ID,FIRSTNAME,LASTNAME,Username,Password,Address,Phonenumber,Income FROM CUSTOMER WHERE CUST_ID="+cusid);
+                resultset.next();
+                fnamefield.setText(resultset.getString(2));
+                lnamefield.setText(resultset.getString(3));
+                userfield.setText(resultset.getString(4));
+                passfield.setText(resultset.getString(5));
+                addfield.setText(resultset.getString(6));
+                phonefield.setText(resultset.getString(7));
+                incomefield.setText(resultset.getString(8));
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
     
-    
-    public RegisterForm(java.awt.Frame parent, boolean modal) {
+    private EditForm(JFrame jFrame, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public EditForm(java.awt.Frame parent, boolean modal, int cus) {
         super(parent, modal);
         initComponents();
+        cusid=cus;
+        userRetrieve();
+        
     }
 
    
@@ -198,20 +223,10 @@ public class RegisterForm extends javax.swing.JDialog {
             Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
 
-            statement.executeUpdate("INSERT INTO CUSTOMER(FIRSTNAME,LASTNAME,PHONENUMBER,INCOME,MEMBERSHIP,ADDRESS, USERNAME, PASSWORD) "
-                    + "VALUES('" + firstname + "','" + lastname + "'"
-                    + ",'" + phonenumber + "','" + income + "',"
-                    + membership + ",'" + address + "','" + username + "','"
-                    + password + "')");
+            statement.executeUpdate("UPDATE CUSTOMER SET FIRSTNAME='"+firstname+"',LASTNAME='"+lastname+"',PHONENUMBER='"+phonenumber
+                    + "',INCOME="+income+",MEMBERSHIP="+membership+",ADDRESS='"+address+"', USERNAME='"+username+"', PASSWORD='"+password+"' WHERE CUST_ID="+cusid);
 
-            ResultSet resultset = statement.executeQuery("SELECT CUST_ID FROM CUSTOMER WHERE USERNAME='" + username + "'");
-            resultset.next();
-            regcustid = resultset.getInt(1);
-
-            statement.executeUpdate("INSERT INTO ACCOUNT (ACCTYPE,BALANCE,CUST_ID) VALUES( 1 , 0 ," + regcustid + ")");
-            statement.executeUpdate("INSERT INTO ACCOUNT (ACCTYPE,BALANCE,CUST_ID) VALUES( 2 , 0 ," + regcustid + ")");
-
-            JOptionPane.showMessageDialog(this, "Created seccessfully!");
+            JOptionPane.showMessageDialog(this, "Updated seccessfully!");
             this.dispose();
             
             
@@ -246,20 +261,21 @@ public class RegisterForm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                RegisterForm dialog = new RegisterForm(new javax.swing.JFrame(), true);
+                EditForm dialog = new EditForm(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

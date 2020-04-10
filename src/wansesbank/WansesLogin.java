@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.net.URL;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.Random;
 import javax.swing.ImageIcon;
 
 /**
@@ -29,7 +30,20 @@ public class WansesLogin extends javax.swing.JFrame {
     private static  final String USERNAME= "wansesco_wans";
     private static final String PASSWORD= "xzMAsW1WQ8Lg";
     private static final String CONN_STRING= "jdbc:mysql://wanses.com:3306/wansesco_wanses";
-//public String myname;
+    private final String char_list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_";
+    
+    public StringBuilder PasswordGen(){
+        Random rand= new Random();
+        int RanInt;
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            RanInt= rand.nextInt(char_list.length());
+            char ch = char_list.charAt(RanInt);
+            str.append(ch);
+        }
+        return str;
+        
+    }
 
     public WansesLogin() {
         initComponents();
@@ -57,7 +71,7 @@ public class WansesLogin extends javax.swing.JFrame {
         regusername = new javax.swing.JTextField();
         regpassword = new javax.swing.JTextField();
         passlabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         regphonenumber = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -68,7 +82,6 @@ public class WansesLogin extends javax.swing.JFrame {
         reglastnamelabel = new javax.swing.JLabel();
         regfirstname = new javax.swing.JTextField();
         fullname = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         registerbutton = new javax.swing.JButton();
         cancelbutton = new javax.swing.JButton();
@@ -138,17 +151,18 @@ public class WansesLogin extends javax.swing.JFrame {
         jLayeredPane1.add(LoginPanel);
         LoginPanel.setBounds(0, 0, 440, 470);
 
-        RegisterPanel.setBackground(new java.awt.Color(230, 230, 230));
+        RegisterPanel.setBackground(new java.awt.Color(240, 240, 240));
+        RegisterPanel.setForeground(new java.awt.Color(255, 255, 255));
         RegisterPanel.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(240, 240, 240));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(226, 226, 226)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Login Information"));
         jPanel2.setLayout(null);
 
         userlabel1.setForeground(new java.awt.Color(0, 0, 0));
         userlabel1.setText("Username:");
         jPanel2.add(userlabel1);
-        userlabel1.setBounds(70, 45, 62, 25);
+        userlabel1.setBounds(40, 30, 62, 25);
 
         regusername.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -156,7 +170,7 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         jPanel2.add(regusername);
-        regusername.setBounds(140, 45, 190, 24);
+        regusername.setBounds(110, 30, 190, 24);
 
         regpassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -164,26 +178,27 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         jPanel2.add(regpassword);
-        regpassword.setBounds(140, 80, 190, 24);
+        regpassword.setBounds(110, 70, 190, 24);
 
         passlabel1.setForeground(new java.awt.Color(0, 0, 0));
         passlabel1.setText("Password:");
         jPanel2.add(passlabel1);
-        passlabel1.setBounds(70, 80, 61, 25);
+        passlabel1.setBounds(40, 70, 61, 25);
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(44, 62, 78));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Login information");
-        jLabel3.setToolTipText("");
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 10, 420, 19);
+        jButton3.setText("Generate");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3);
+        jButton3.setBounds(310, 70, 82, 25);
 
         RegisterPanel.add(jPanel2);
-        jPanel2.setBounds(0, 60, 440, 130);
+        jPanel2.setBounds(10, 70, 420, 120);
 
         jPanel3.setBackground(new java.awt.Color(240, 240, 240));
-        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(237, 237, 237)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Personal Information"));
         jPanel3.setLayout(null);
 
         regphonenumber.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -192,17 +207,17 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         jPanel3.add(regphonenumber);
-        regphonenumber.setBounds(130, 125, 110, 24);
+        regphonenumber.setBounds(130, 120, 110, 24);
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Phone Number :");
         jPanel3.add(jLabel5);
-        jLabel5.setBounds(40, 125, 100, 25);
+        jLabel5.setBounds(40, 120, 100, 25);
 
         incomelabel.setForeground(new java.awt.Color(0, 0, 0));
         incomelabel.setText("Yearly Income* :");
         jPanel3.add(incomelabel);
-        incomelabel.setBounds(40, 165, 91, 25);
+        incomelabel.setBounds(40, 160, 91, 25);
 
         regincome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -210,7 +225,7 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         jPanel3.add(regincome);
-        regincome.setBounds(130, 165, 110, 24);
+        regincome.setBounds(130, 160, 110, 24);
 
         regaddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -218,7 +233,7 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         jPanel3.add(regaddress);
-        regaddress.setBounds(90, 85, 310, 24);
+        regaddress.setBounds(90, 80, 310, 24);
 
         reglastname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -226,12 +241,12 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         jPanel3.add(reglastname);
-        reglastname.setBounds(290, 45, 110, 24);
+        reglastname.setBounds(290, 40, 110, 24);
 
         reglastnamelabel.setForeground(new java.awt.Color(0, 0, 0));
         reglastnamelabel.setText("Last Name:");
         jPanel3.add(reglastnamelabel);
-        reglastnamelabel.setBounds(230, 45, 70, 25);
+        reglastnamelabel.setBounds(230, 40, 70, 25);
 
         regfirstname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -239,24 +254,17 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         jPanel3.add(regfirstname);
-        regfirstname.setBounds(110, 45, 110, 24);
+        regfirstname.setBounds(110, 40, 110, 24);
 
         fullname.setForeground(new java.awt.Color(0, 0, 0));
         fullname.setText("First Name:");
         jPanel3.add(fullname);
-        fullname.setBounds(40, 45, 70, 25);
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(44, 62, 78));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Personal Information");
-        jPanel3.add(jLabel4);
-        jLabel4.setBounds(10, 10, 420, 19);
+        fullname.setBounds(40, 40, 70, 25);
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Address:");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(40, 85, 51, 25);
+        jLabel6.setBounds(40, 80, 51, 25);
 
         registerbutton.setText("Register");
         registerbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +273,7 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         jPanel3.add(registerbutton);
-        registerbutton.setBounds(80, 210, 100, 25);
+        registerbutton.setBounds(80, 200, 100, 25);
 
         cancelbutton.setText("Cancel");
         cancelbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -274,10 +282,10 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         jPanel3.add(cancelbutton);
-        cancelbutton.setBounds(260, 210, 100, 25);
+        cancelbutton.setBounds(260, 200, 100, 25);
 
         RegisterPanel.add(jPanel3);
-        jPanel3.setBounds(0, 190, 440, 270);
+        jPanel3.setBounds(10, 200, 420, 260);
 
         jPanel15.setBackground(new java.awt.Color(70, 94, 114));
         jPanel15.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 2, 0, new java.awt.Color(50, 72, 92)));
@@ -501,6 +509,10 @@ public class WansesLogin extends javax.swing.JFrame {
                     evt.consume();
     }//GEN-LAST:event_passfieldKeyTyped
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        regpassword.setText(PasswordGen().toString());
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -549,10 +561,9 @@ public class WansesLogin extends javax.swing.JFrame {
     private javax.swing.JLabel incomelabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
