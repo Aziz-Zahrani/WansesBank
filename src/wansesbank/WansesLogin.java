@@ -47,9 +47,9 @@ public class WansesLogin extends javax.swing.JFrame {
 
     public WansesLogin() {
         initComponents();
-        URL iconURL = getClass().getResource("/wansesbank/images/appicon.png");
-        ImageIcon icon = new ImageIcon(iconURL);
-        this.setIconImage(icon.getImage());
+        //URL iconURL = getClass().getResource("/wansesbank/images/appicon.png");
+        //ImageIcon icon = new ImageIcon(iconURL);
+        //this.setIconImage(icon.getImage());
     }
 
     @SuppressWarnings("unchecked")
@@ -57,9 +57,9 @@ public class WansesLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         container = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        mini = new javax.swing.JButton();
+        close = new javax.swing.JButton();
+        headers = new javax.swing.JLabel();
         LoginPanel = new javax.swing.JPanel();
         usernamefield = new javax.swing.JTextField();
         passlabel = new javax.swing.JLabel();
@@ -85,40 +85,50 @@ public class WansesLogin extends javax.swing.JFrame {
 
         container.setLayout(null);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/minimize.png"))); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setFocusPainted(false);
-        jButton3.setRolloverEnabled(true);
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/minimizepressed.png"))); // NOI18N
-        container.add(jButton3);
-        jButton3.setBounds(440, 0, 20, 20);
+        mini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/minimize.png"))); // NOI18N
+        mini.setBorder(null);
+        mini.setBorderPainted(false);
+        mini.setContentAreaFilled(false);
+        mini.setFocusPainted(false);
+        mini.setRolloverEnabled(true);
+        mini.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/minimizepressed.png"))); // NOI18N
+        mini.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miniActionPerformed(evt);
+            }
+        });
+        container.add(mini);
+        mini.setBounds(440, 0, 20, 20);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/close.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setFocusPainted(false);
-        jButton4.setRolloverEnabled(true);
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/closepressed.png"))); // NOI18N
-        container.add(jButton4);
-        jButton4.setBounds(460, 0, 20, 20);
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/close.png"))); // NOI18N
+        close.setBorder(null);
+        close.setBorderPainted(false);
+        close.setContentAreaFilled(false);
+        close.setFocusPainted(false);
+        close.setRolloverEnabled(true);
+        close.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/closepressed.png"))); // NOI18N
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeActionPerformed(evt);
+            }
+        });
+        container.add(close);
+        close.setBounds(460, 0, 20, 20);
 
-        jLabel4.setBackground(new java.awt.Color(44, 62, 78));
-        jLabel4.setOpaque(true);
-        jLabel4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        headers.setBackground(new java.awt.Color(44, 62, 78));
+        headers.setOpaque(true);
+        headers.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jLabel4MouseDragged(evt);
+                headersMouseDragged(evt);
             }
         });
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        headers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel4MousePressed(evt);
+                headersMousePressed(evt);
             }
         });
-        container.add(jLabel4);
-        jLabel4.setBounds(0, 0, 480, 20);
+        container.add(headers);
+        headers.setBounds(0, 0, 480, 22);
 
         LoginPanel.setBackground(new java.awt.Color(240, 240, 240));
         LoginPanel.setLayout(null);
@@ -177,6 +187,7 @@ public class WansesLogin extends javax.swing.JFrame {
         jButton2.setToolTipText(""); // NOI18N
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
         jButton2.setFocusable(false);
         jButton2.setOpaque(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -287,19 +298,27 @@ public class WansesLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jLabel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseDragged
+    private void headersMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headersMouseDragged
         int corX = evt.getXOnScreen();
         int corY = evt.getYOnScreen();
         
         this.setLocation(corX-mouseX, corY-mouseY);
-    }//GEN-LAST:event_jLabel4MouseDragged
+    }//GEN-LAST:event_headersMouseDragged
 
-    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+    private void headersMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headersMousePressed
         mouseX = evt.getX();
         mouseY = evt.getY();
         
         
-    }//GEN-LAST:event_jLabel4MousePressed
+    }//GEN-LAST:event_headersMousePressed
+
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
+        dispose();
+    }//GEN-LAST:event_closeActionPerformed
+
+    private void miniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miniActionPerformed
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_miniActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,17 +361,17 @@ public class WansesLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LoginPanel;
+    private javax.swing.JButton close;
     private javax.swing.JPanel container;
+    private javax.swing.JLabel headers;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton mini;
     private javax.swing.JPasswordField passfield;
     private javax.swing.JLabel passlabel;
     private javax.swing.JLabel userlabel;

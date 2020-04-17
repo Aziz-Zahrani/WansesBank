@@ -159,9 +159,9 @@ public class EmployeeFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(CEObut);
-        CEObut.setBounds(10, 240, 160, 30);
+        CEObut.setBounds(10, 240, 160, 32);
 
-        jButton1.setText("Check Information");
+        jButton1.setText("Refresh the table");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
