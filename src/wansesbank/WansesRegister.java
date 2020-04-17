@@ -136,7 +136,7 @@ public class WansesRegister extends javax.swing.JFrame {
         jButton3.setBounds(310, 70, 82, 25);
 
         RegisterPanel.add(jPanel2);
-        jPanel2.setBounds(10, 120, 420, 120);
+        jPanel2.setBounds(10, 140, 420, 120);
 
         jPanel3.setBackground(new java.awt.Color(240, 240, 240));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Personal Information"));
@@ -226,7 +226,7 @@ public class WansesRegister extends javax.swing.JFrame {
         cancelbutton.setBounds(260, 200, 100, 25);
 
         RegisterPanel.add(jPanel3);
-        jPanel3.setBounds(10, 250, 420, 260);
+        jPanel3.setBounds(10, 270, 420, 250);
 
         jPanel15.setBackground(new java.awt.Color(44, 62, 78));
         jPanel15.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 2, 0, new java.awt.Color(102, 102, 102)));
@@ -242,9 +242,9 @@ public class WansesRegister extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registration");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/reglabel.png"))); // NOI18N
         RegisterPanel.add(jLabel1);
-        jLabel1.setBounds(0, 90, 440, 30);
+        jLabel1.setBounds(0, 100, 440, 30);
 
         container.add(RegisterPanel);
         RegisterPanel.setBounds(0, 0, 440, 580);

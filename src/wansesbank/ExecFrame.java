@@ -23,7 +23,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Wans
  */
-public class EmployeeFrame extends javax.swing.JFrame {
+public class ExecFrame extends javax.swing.JFrame {
 
     private static final String USERNAME= "wansesco_wans";
     private static final String PASSWORD= "xzMAsW1WQ8Lg";
@@ -33,16 +33,16 @@ public class EmployeeFrame extends javax.swing.JFrame {
     String []cus= new String[7];
     private TableModel model;
     Employee user = new Employee();
-    ExecFrame exec= new ExecFrame();
+
     /**
      * Creates new form EmployeeFrame
      */
-    public EmployeeFrame() {
+    public ExecFrame() {
         initComponents();
         updateTable();
     }
 
-    public EmployeeFrame(String username, String password) {
+    public ExecFrame(String username, String password) {
         try (
                 Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
                 Statement statement = connection.createStatement();
@@ -81,10 +81,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         }
 
         initComponents();
-        if(user.getEmprole()==1)
-            CEObut.setVisible(true);
-        else
-            CEObut.setVisible(false);
+
         
         updateTable();
     }
@@ -103,28 +100,26 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        CEObut = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         updatebutton = new javax.swing.JButton();
         addbutton = new javax.swing.JButton();
         deletebutton = new javax.swing.JButton();
         filterfield = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        signoutlabel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Employee Panel");
-        setMinimumSize(new java.awt.Dimension(1000, 545));
-        setPreferredSize(new java.awt.Dimension(1000, 545));
+        setMinimumSize(new java.awt.Dimension(835, 520));
+        setPreferredSize(new java.awt.Dimension(835, 520));
         setResizable(false);
-        setSize(new java.awt.Dimension(400, 400));
+        setSize(new java.awt.Dimension(835, 520));
         getContentPane().setLayout(null);
 
         MainCenterPane.setLayout(null);
@@ -145,21 +140,12 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         CheckInformationPanel.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 20, 790, 350);
+        jScrollPane1.setBounds(10, 20, 620, 350);
 
         MainCenterPane.add(CheckInformationPanel);
         CheckInformationPanel.setBounds(180, 90, 830, 440);
 
         jPanel1.setLayout(null);
-
-        CEObut.setText("Manage Employees");
-        CEObut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CEObutActionPerformed(evt);
-            }
-        });
-        jPanel1.add(CEObut);
-        CEObut.setBounds(10, 240, 160, 30);
 
         jButton1.setText("Check Information");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +156,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(10, 200, 160, 32);
 
-        updatebutton.setText("Update a cutomer");
+        updatebutton.setText("Update an Employee");
         updatebutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updatebuttonActionPerformed(evt);
@@ -179,7 +165,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jPanel1.add(updatebutton);
         updatebutton.setBounds(10, 160, 160, 32);
 
-        addbutton.setText("Add a cutomer");
+        addbutton.setText("Hire an Employee");
         addbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addbuttonActionPerformed(evt);
@@ -188,7 +174,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jPanel1.add(addbutton);
         addbutton.setBounds(10, 120, 160, 32);
 
-        deletebutton.setText("Delete a cutomer");
+        deletebutton.setText("Fire an Employee");
         deletebutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletebuttonActionPerformed(evt);
@@ -209,6 +195,12 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(10, 20, 40, 20);
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 9)); // NOI18N
+        jLabel7.setText("<html>Roles:\n<br><br>1 - CEO\n<br><br>2 - Security & Fraud Specialist\n<br><br>3 - Accountant\n<br><br>4 - Fund Manager\n<br><br>5 - Business Technology Specialist</html>");
+        jLabel7.setToolTipText("");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(20, 230, 150, 160);
+
         MainCenterPane.add(jPanel1);
         jPanel1.setBounds(0, 90, 180, 440);
 
@@ -220,30 +212,12 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jPanel2.add(jLabel5);
         jLabel5.setBounds(0, 5, 210, 80);
 
-        signoutlabel.setBackground(new java.awt.Color(44, 62, 78));
-        signoutlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/signout.png"))); // NOI18N
-        signoutlabel.setBorder(null);
-        signoutlabel.setBorderPainted(false);
-        signoutlabel.setContentAreaFilled(false);
-        signoutlabel.setFocusPainted(false);
-        signoutlabel.setFocusable(false);
-        signoutlabel.setOpaque(true);
-        signoutlabel.setRolloverEnabled(true);
-        signoutlabel.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/signoutpressed.png"))); // NOI18N
-        signoutlabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signoutlabelActionPerformed(evt);
-            }
-        });
-        jPanel2.add(signoutlabel);
-        signoutlabel.setBounds(840, 20, 140, 50);
-
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Employee Panel");
+        jLabel6.setText("Manager Panel");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(210, 10, 620, 47);
+        jLabel6.setBounds(210, 10, 590, 47);
 
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel3.setFocusable(false);
@@ -262,7 +236,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jPanel3.add(jLabel2);
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(210, 60, 620, 30);
+        jPanel3.setBounds(210, 60, 590, 30);
 
         MainCenterPane.add(jPanel2);
         jPanel2.setBounds(0, 0, 1010, 90);
@@ -273,18 +247,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signoutlabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signoutlabelActionPerformed
-
-        exec.dispose();
-        this.dispose();
-        WansesLogin a = new WansesLogin();
-        a.setLocationRelativeTo(this);
-        a.setVisible(true);
-       
-    }//GEN-LAST:event_signoutlabelActionPerformed
-
     private void addbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbuttonActionPerformed
-    RegisterForm b= new RegisterForm(null, true);
+    HireForm b= new HireForm(null, true);
     b.setLocationRelativeTo(this);
     b.setVisible(true);  
     }//GEN-LAST:event_addbuttonActionPerformed
@@ -297,8 +261,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
                      try {
                 Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
                 Statement statement = connection.createStatement();
-                statement.executeUpdate("DELETE FROM ACCOUNT WHERE CUST_ID="+valueid+" AND (ACCTYPE=1 OR ACCTYPE=2)");
-                statement.executeUpdate("DELETE FROM CUSTOMER WHERE CUST_ID="+valueid);
+                statement.executeUpdate("DELETE FROM EMPLOYEE WHERE EMP_ID="+valueid);
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -323,18 +286,12 @@ public class EmployeeFrame extends javax.swing.JFrame {
         int column=0;
         int row= jTable1.getSelectedRow();
         int cus= (int)jTable1.getValueAt(row, 0);
-        EditForm l = new EditForm(null,true,cus);
+        EditEmp l = new EditEmp(null,true,cus);
         l.setLocationRelativeTo(this);
         l.setVisible(true);
         }
         
     }//GEN-LAST:event_updatebuttonActionPerformed
-
-    private void CEObutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CEObutActionPerformed
-        
-        exec.setVisible(true);
-        exec.setLocationRelativeTo(this);
-    }//GEN-LAST:event_CEObutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,20 +310,21 @@ public class EmployeeFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmployeeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExecFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmployeeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExecFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmployeeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExecFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmployeeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExecFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmployeeFrame().setVisible(true);
+                new ExecFrame().setVisible(true);
             }
         });
 
@@ -374,7 +332,6 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CEObut;
     private javax.swing.JPanel CheckInformationPanel;
     private javax.swing.JPanel MainCenterPane;
     private javax.swing.JButton addbutton;
@@ -387,12 +344,12 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton signoutlabel;
     private javax.swing.JButton updatebutton;
     // End of variables declaration//GEN-END:variables
 
@@ -400,12 +357,9 @@ public class EmployeeFrame extends javax.swing.JFrame {
                      try {
                 Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
                 Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery("SELECT DISTINCT C.CUST_ID AS ID,CONCAT(FIRSTNAME,' ',LASTNAME) as 'Full Name',Username,Password,Phonenumber as 'Phone Number',Income,A.BALANCE AS CHECKING ,B.BALANCE AS SAVING\n" +
-"FROM CUSTOMER AS C \n" +
-"INNER JOIN ACCOUNT AS A ON A.CUST_ID=C.CUST_ID AND A.ACCTYPE=1\n" +
-"JOIN ACCOUNT AS B ON B.CUST_ID=C.CUST_ID AND B.ACCTYPE=2");
-                //ResultSet resultset2 = statement.executeQuery("SELECT BALANCE FROM CUSTOMER"); 
-            
+                ResultSet resultset = statement.executeQuery("SELECT EMP_ID, CONCAT(FIRSTNAME,' ',LASTNAME) as 'Full Name',Emprole, USERNAME, PASSWORD FROM EMPLOYEE");
+                //ResultSet resultset2 = statement.executeQuery("SELECT BALANCE FROM CUSTOMER");
+                
             ResultSetMetaData meta = resultset.getMetaData();
             model = DbUtils.resultSetToTableModel(resultset);
             jTable1.setModel(model);

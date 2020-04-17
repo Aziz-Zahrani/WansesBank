@@ -66,8 +66,9 @@ public class WansesLogin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -92,17 +93,17 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         LoginPanel.add(usernamefield);
-        usernamefield.setBounds(70, 80, 220, 24);
+        usernamefield.setBounds(70, 90, 220, 24);
 
         passlabel.setForeground(new java.awt.Color(51, 51, 51));
         passlabel.setText("Password:");
         LoginPanel.add(passlabel);
-        passlabel.setBounds(70, 110, 61, 16);
+        passlabel.setBounds(70, 120, 61, 16);
 
         userlabel.setForeground(new java.awt.Color(51, 51, 51));
         userlabel.setText("Username:");
         LoginPanel.add(userlabel);
-        userlabel.setBounds(70, 60, 62, 16);
+        userlabel.setBounds(70, 70, 62, 16);
 
         passfield.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -113,7 +114,7 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         LoginPanel.add(passfield);
-        passfield.setBounds(70, 130, 220, 25);
+        passfield.setBounds(70, 140, 220, 25);
 
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +123,7 @@ public class WansesLogin extends javax.swing.JFrame {
             }
         });
         LoginPanel.add(jButton1);
-        jButton1.setBounds(120, 180, 110, 25);
+        jButton1.setBounds(120, 190, 110, 25);
 
         jPanel2.setBackground(new java.awt.Color(240, 240, 240));
 
@@ -147,7 +148,12 @@ public class WansesLogin extends javax.swing.JFrame {
         jPanel2.add(jButton2);
 
         LoginPanel.add(jPanel2);
-        jPanel2.setBounds(60, 210, 220, 20);
+        jPanel2.setBounds(60, 220, 220, 20);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/loginlabel.png"))); // NOI18N
+        LoginPanel.add(jLabel1);
+        jLabel1.setBounds(0, 20, 360, 40);
 
         container.add(LoginPanel);
         LoginPanel.setBounds(120, 0, 360, 290);
@@ -156,9 +162,9 @@ public class WansesLogin extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 715));
         jPanel1.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/logoside.png"))); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 40, 80, 200);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/logoside.png"))); // NOI18N
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(20, 0, 90, 240);
 
         container.add(jPanel1);
         jPanel1.setBounds(0, 0, 120, 290);
@@ -288,6 +294,7 @@ public class WansesLogin extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField passfield;

@@ -8,18 +8,24 @@ package wansesbank;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.util.Random;
 import javax.swing.JFrame;
+import net.proteanit.sql.DbUtils;
 
-public class RegisterForm extends javax.swing.JDialog {
+public class EditEmp extends javax.swing.JDialog {
     
     private static final String USERNAME= "wansesco_wans";
     private static final String PASSWORD= "xzMAsW1WQ8Lg";
     private static final String CONN_STRING= "jdbc:mysql://wanses.com:3306/wansesco_wanses";
     private final String char_list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_";
+    String[] empRoles = {"CEO", "Security & Fraud Specialist", "Accountant", "Fund Manager", "Business Technology Specialist"};
+    private int empid;
+    
+    
     public StringBuilder PasswordGen(){
         Random rand= new Random();
         int RanInt;
@@ -32,14 +38,34 @@ public class RegisterForm extends javax.swing.JDialog {
         return str;
         
     }
-    private RegisterForm(JFrame jFrame, boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void userRetrieve(){
+        try {
+                Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+                Statement statement = connection.createStatement();
+                ResultSet resultset = statement.executeQuery("SELECT  EMP_ID,FIRSTNAME,LASTNAME,USERNAME,PASSWORD,EMPROLE,BANK_ID FROM EMPLOYEE WHERE EMP_ID="+empid);
+                resultset.next();
+                fnamefield.setText(resultset.getString(2));
+                lnamefield.setText(resultset.getString(3));
+                userfield.setText(resultset.getString(4));
+                passfield.setText(resultset.getString(5));
+                empcombo.setSelectedIndex(resultset.getInt(6));
+                bankfield.setText(String.valueOf(resultset.getInt(7)));
+
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
     
-    
-    public RegisterForm(java.awt.Frame parent, boolean modal) {
+    private EditEmp(JFrame jFrame, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public EditEmp(java.awt.Frame parent, boolean modal, int emp) {
         super(parent, modal);
         initComponents();
+        empid=emp;
+        userRetrieve();
+        
     }
 
    
@@ -56,7 +82,6 @@ public class RegisterForm extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         registerbutton = new javax.swing.JButton();
         cancelbutton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         passfield = new javax.swing.JTextField();
         passlabel = new javax.swing.JLabel();
@@ -66,14 +91,12 @@ public class RegisterForm extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         fullname = new javax.swing.JLabel();
         incomelabel = new javax.swing.JLabel();
-        phonefield = new javax.swing.JTextField();
         fullname1 = new javax.swing.JLabel();
-        addfield = new javax.swing.JTextField();
         lnamefield = new javax.swing.JTextField();
-        incomefield = new javax.swing.JTextField();
+        bankfield = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         fnamefield = new javax.swing.JTextField();
+        empcombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Register Form");
@@ -88,7 +111,7 @@ public class RegisterForm extends javax.swing.JDialog {
             }
         });
         jPanel1.add(registerbutton);
-        registerbutton.setBounds(60, 370, 100, 25);
+        registerbutton.setBounds(60, 310, 100, 25);
 
         cancelbutton.setText("Cancel");
         cancelbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,12 +120,7 @@ public class RegisterForm extends javax.swing.JDialog {
             }
         });
         jPanel1.add(cancelbutton);
-        cancelbutton.setBounds(180, 370, 100, 25);
-
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("<html>"+"Checking and saving accounts will be made for this customer"+"</html>");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(25, 330, 290, 30);
+        cancelbutton.setBounds(180, 310, 100, 25);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Login Informaion"));
         jPanel2.setLayout(null);
@@ -138,34 +156,32 @@ public class RegisterForm extends javax.swing.JDialog {
         jPanel3.add(fullname);
         fullname.setBounds(20, 30, 70, 25);
 
-        incomelabel.setText("Yearly Income* :");
+        incomelabel.setText("Bank Branch:");
         jPanel3.add(incomelabel);
-        incomelabel.setBounds(20, 150, 91, 25);
-        jPanel3.add(phonefield);
-        phonefield.setBounds(120, 120, 160, 24);
+        incomelabel.setBounds(20, 120, 91, 25);
 
         fullname1.setText("Last Name:");
         jPanel3.add(fullname1);
         fullname1.setBounds(20, 60, 70, 25);
-        jPanel3.add(addfield);
-        addfield.setBounds(90, 90, 190, 24);
         jPanel3.add(lnamefield);
         lnamefield.setBounds(90, 60, 190, 24);
-        jPanel3.add(incomefield);
-        incomefield.setBounds(120, 150, 160, 24);
 
-        jLabel5.setText("Phone Number:");
+        bankfield.setEditable(false);
+        jPanel3.add(bankfield);
+        bankfield.setBounds(120, 120, 160, 24);
+
+        jLabel5.setText("Role:");
         jPanel3.add(jLabel5);
-        jLabel5.setBounds(20, 120, 87, 25);
-
-        jLabel6.setText("Address:");
-        jPanel3.add(jLabel6);
-        jLabel6.setBounds(20, 90, 51, 25);
+        jLabel5.setBounds(20, 90, 87, 25);
         jPanel3.add(fnamefield);
         fnamefield.setBounds(90, 30, 190, 24);
 
+        empcombo.setModel(new javax.swing.DefaultComboBoxModel<>(empRoles));
+        jPanel3.add(empcombo);
+        empcombo.setBounds(90, 90, 190, 26);
+
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(20, 140, 300, 190);
+        jPanel3.setBounds(20, 140, 300, 160);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,7 +191,7 @@ public class RegisterForm extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
         );
 
         pack();
@@ -185,33 +201,19 @@ public class RegisterForm extends javax.swing.JDialog {
 
         String firstname = fnamefield.getText();
         String lastname = lnamefield.getText();
-        String phonenumber = phonefield.getText();
-        Double income = Double.parseDouble(incomefield.getText());
-        int membership = Double.parseDouble(incomefield.getText()) >= 15000 ? 3 : (Double.parseDouble(incomefield.getText()) >= 7500 ? 2 : 1);
-        String address = addfield.getText();
         String username = userfield.getText();
         String password = passfield.getText();
-        int regcustid;
+        int emprole = empcombo.getSelectedIndex()+1;
 
         try {
             // create a java mysql database connection
             Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
 
-            statement.executeUpdate("INSERT INTO CUSTOMER(FIRSTNAME,LASTNAME,PHONENUMBER,INCOME,MEMBERSHIP,ADDRESS, USERNAME, PASSWORD) "
-                    + "VALUES('" + firstname + "','" + lastname + "'"
-                    + ",'" + phonenumber + "','" + income + "',"
-                    + membership + ",'" + address + "','" + username + "','"
-                    + password + "')");
+            statement.executeUpdate("UPDATE EMPLOYEE SET FIRSTNAME='"+firstname+"',LASTNAME='"+lastname+"',Emprole="+emprole
+                    + ",BANK_ID=1, USERNAME='"+username+"', PASSWORD='"+password+"' WHERE EMP_ID="+empid);
 
-            ResultSet resultset = statement.executeQuery("SELECT CUST_ID FROM CUSTOMER WHERE USERNAME='" + username + "'");
-            resultset.next();
-            regcustid = resultset.getInt(1);
-
-            statement.executeUpdate("INSERT INTO ACCOUNT (ACCTYPE,BALANCE,CUST_ID) VALUES( 1 , 0 ," + regcustid + ")");
-            statement.executeUpdate("INSERT INTO ACCOUNT (ACCTYPE,BALANCE,CUST_ID) VALUES( 2 , 0 ," + regcustid + ")");
-
-            JOptionPane.showMessageDialog(this, "Created seccessfully!");
+            JOptionPane.showMessageDialog(this, "Updated seccessfully!");
             this.dispose();
             
             
@@ -246,20 +248,23 @@ public class RegisterForm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                RegisterForm dialog = new RegisterForm(new javax.swing.JFrame(), true);
+                EditEmp dialog = new EditEmp(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -272,24 +277,21 @@ public class RegisterForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addfield;
+    private javax.swing.JTextField bankfield;
     private javax.swing.JButton cancelbutton;
+    private javax.swing.JComboBox<String> empcombo;
     private javax.swing.JTextField fnamefield;
     private javax.swing.JLabel fullname;
     private javax.swing.JLabel fullname1;
-    private javax.swing.JTextField incomefield;
     private javax.swing.JLabel incomelabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField lnamefield;
     private javax.swing.JTextField passfield;
     private javax.swing.JLabel passlabel;
-    private javax.swing.JTextField phonefield;
     private javax.swing.JButton registerbutton;
     private javax.swing.JTextField userfield;
     private javax.swing.JLabel userlabel;

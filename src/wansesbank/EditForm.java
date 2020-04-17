@@ -81,7 +81,6 @@ public class EditForm extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         registerbutton = new javax.swing.JButton();
         cancelbutton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         passfield = new javax.swing.JTextField();
         passlabel = new javax.swing.JLabel();
@@ -113,7 +112,7 @@ public class EditForm extends javax.swing.JDialog {
             }
         });
         jPanel1.add(registerbutton);
-        registerbutton.setBounds(60, 370, 100, 25);
+        registerbutton.setBounds(60, 350, 100, 25);
 
         cancelbutton.setText("Cancel");
         cancelbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -122,12 +121,7 @@ public class EditForm extends javax.swing.JDialog {
             }
         });
         jPanel1.add(cancelbutton);
-        cancelbutton.setBounds(180, 370, 100, 25);
-
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("<html>"+"Checking and saving accounts will be made for this customer"+"</html>");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(25, 330, 290, 30);
+        cancelbutton.setBounds(180, 350, 100, 25);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Login Informaion"));
         jPanel2.setLayout(null);
@@ -151,7 +145,7 @@ public class EditForm extends javax.swing.JDialog {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(200, 90, 80, 25);
+        jButton1.setBounds(190, 90, 90, 25);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(20, 10, 300, 130);
@@ -200,7 +194,7 @@ public class EditForm extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
         );
 
         pack();
@@ -216,7 +210,6 @@ public class EditForm extends javax.swing.JDialog {
         String address = addfield.getText();
         String username = userfield.getText();
         String password = passfield.getText();
-        int regcustid;
 
         try {
             // create a java mysql database connection
@@ -296,7 +289,6 @@ public class EditForm extends javax.swing.JDialog {
     private javax.swing.JTextField incomefield;
     private javax.swing.JLabel incomelabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

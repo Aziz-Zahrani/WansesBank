@@ -8,9 +8,7 @@ package wansesbank;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -48,7 +46,7 @@ public class WansesFrame extends javax.swing.JFrame {
                 ResultSet resultset = statement.executeQuery("SELECT * FROM CUSTOMER WHERE username='" + user.getUsername() + "' and password='" + user.getPassword() + "'");) {
 
             ResultSetMetaData meta = resultset.getMetaData();
-
+            
             resultset.next();
             user.setCust_ID(resultset.getInt(1));
             user.setFirstname(resultset.getString(2));
@@ -174,6 +172,107 @@ public class WansesFrame extends javax.swing.JFrame {
 
         contentpanel = new javax.swing.JPanel();
         dashboard = new javax.swing.JLayeredPane();
+        transactionpanel = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        logindate2 = new javax.swing.JLabel();
+        jPanel23 = new javax.swing.JPanel();
+        tobenfit = new javax.swing.JPanel();
+        jPanel24 = new javax.swing.JPanel();
+        balancelabel3 = new javax.swing.JLabel();
+        jPanel25 = new javax.swing.JPanel();
+        balancecashlabel2 = new javax.swing.JLabel();
+        SARlabel2 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        reciever = new javax.swing.JComboBox<>();
+        jLabel28 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jPanel27 = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        totaltrans = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jPanel26 = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        sendtrans = new javax.swing.JToggleButton();
+        jLabel34 = new javax.swing.JLabel();
+        betweenmyacc = new javax.swing.JPanel();
+        jPanel28 = new javax.swing.JPanel();
+        balancelabel2 = new javax.swing.JLabel();
+        jPanel29 = new javax.swing.JPanel();
+        balancecashlabel3 = new javax.swing.JLabel();
+        SARlabel4 = new javax.swing.JLabel();
+        jPanel30 = new javax.swing.JPanel();
+        jPanel31 = new javax.swing.JPanel();
+        balancecashlabel4 = new javax.swing.JLabel();
+        SARlabel5 = new javax.swing.JLabel();
+        balancelabel5 = new javax.swing.JLabel();
+        transactfield1 = new javax.swing.JTextField();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        loanpanel = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        logindate3 = new javax.swing.JLabel();
+        jPanel33 = new javax.swing.JPanel();
+        jLabel41 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jPanel34 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        mainpanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        logindate = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        balancecashlabel = new javax.swing.JLabel();
+        SARlabel = new javax.swing.JLabel();
+        balancelabel = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        summary = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        briefsummarylabel = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        balancelabel1 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        balancecashlabel1 = new javax.swing.JLabel();
+        SARlabel1 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        depositbutton1 = new javax.swing.JButton();
+        withdrawbutton1 = new javax.swing.JButton();
+        SARlabel3 = new javax.swing.JLabel();
+        transactfield = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        withdrawsuccess = new javax.swing.JLabel();
+        depositsuccess = new javax.swing.JLabel();
+        balancelabel4 = new javax.swing.JLabel();
         accountpanel = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -251,96 +350,6 @@ public class WansesFrame extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         benacc = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        transactionpanel = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        logindate2 = new javax.swing.JLabel();
-        jPanel23 = new javax.swing.JPanel();
-        betweenmyacc = new javax.swing.JPanel();
-        jPanel28 = new javax.swing.JPanel();
-        balancelabel2 = new javax.swing.JLabel();
-        jPanel29 = new javax.swing.JPanel();
-        balancecashlabel3 = new javax.swing.JLabel();
-        SARlabel4 = new javax.swing.JLabel();
-        jPanel30 = new javax.swing.JPanel();
-        jPanel31 = new javax.swing.JPanel();
-        balancecashlabel4 = new javax.swing.JLabel();
-        SARlabel5 = new javax.swing.JLabel();
-        balancelabel5 = new javax.swing.JLabel();
-        transactfield1 = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        tobenfit = new javax.swing.JPanel();
-        jPanel24 = new javax.swing.JPanel();
-        balancelabel3 = new javax.swing.JLabel();
-        jPanel25 = new javax.swing.JPanel();
-        balancecashlabel2 = new javax.swing.JLabel();
-        SARlabel2 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        reciever = new javax.swing.JComboBox<>();
-        jLabel28 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jPanel27 = new javax.swing.JPanel();
-        jLabel37 = new javax.swing.JLabel();
-        totaltrans = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jPanel26 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel36 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        sendtrans = new javax.swing.JToggleButton();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        mainpanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        logindate = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        balancecashlabel = new javax.swing.JLabel();
-        SARlabel = new javax.swing.JLabel();
-        balancelabel = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        summary = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        briefsummarylabel = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        balancelabel1 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        balancecashlabel1 = new javax.swing.JLabel();
-        SARlabel1 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        depositbutton1 = new javax.swing.JButton();
-        withdrawbutton1 = new javax.swing.JButton();
-        SARlabel3 = new javax.swing.JLabel();
-        transactfield = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        withdrawsuccess = new javax.swing.JLabel();
-        depositsuccess = new javax.swing.JLabel();
-        balancelabel4 = new javax.swing.JLabel();
-        loanpanel = new javax.swing.JPanel();
-        jPanel19 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jPanel20 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        logindate3 = new javax.swing.JLabel();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         leftboard = new javax.swing.JLayeredPane();
         leftpan = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -363,6 +372,655 @@ public class WansesFrame extends javax.swing.JFrame {
 
         contentpanel.setBackground(new java.awt.Color(255, 255, 255));
         contentpanel.setLayout(null);
+
+        transactionpanel.setBackground(new java.awt.Color(240, 240, 240));
+        transactionpanel.setForeground(new java.awt.Color(240, 240, 240));
+        transactionpanel.setLayout(null);
+
+        jPanel11.setBackground(new java.awt.Color(70, 94, 114));
+        jPanel11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 2, 0, new java.awt.Color(50, 72, 92)));
+        jPanel11.setLayout(null);
+
+        jLabel11.setFont(new java.awt.Font("HelvLight", 0, 36)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/labels/transactionlabelwhite.png"))); // NOI18N
+        jPanel11.add(jLabel11);
+        jLabel11.setBounds(20, 25, 200, 47);
+
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(248, 248, 248)));
+        jPanel12.setLayout(null);
+
+        jLabel18.setFont(new java.awt.Font("Gill Sans MT", 0, 20)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel18.setText("Welcome back, "+user.getFirstname()+" "+ user.getLastname());
+        jPanel12.add(jLabel18);
+        jLabel18.setBounds(20, 10, 550, 30);
+
+        logindate2.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        logindate2.setForeground(new java.awt.Color(153, 153, 153));
+        logindate2.setText("Logged in at "+ formatter.format(date));
+        jPanel12.add(logindate2);
+        logindate2.setBounds(25, 35, 220, 16);
+
+        jPanel11.add(jPanel12);
+        jPanel12.setBounds(0, 90, 590, 60);
+
+        transactionpanel.add(jPanel11);
+        jPanel11.setBounds(0, 0, 590, 150);
+
+        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel23.setLayout(null);
+
+        tobenfit.setBackground(new java.awt.Color(255, 255, 255));
+        tobenfit.setLayout(null);
+
+        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel24.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
+        jPanel24.setForeground(new java.awt.Color(165, 165, 165));
+        jPanel24.setLayout(null);
+
+        balancelabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        balancelabel3.setForeground(new java.awt.Color(44, 62, 78));
+        balancelabel3.setText("Checking Account");
+        jPanel24.add(balancelabel3);
+        balancelabel3.setBounds(100, 10, 130, 24);
+
+        jPanel25.setOpaque(false);
+
+        balancecashlabel2.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        balancecashlabel2.setForeground(new java.awt.Color(28, 28, 28));
+        balancecashlabel2.setText(String.format("%.2f", checking.getBalance()));
+        jPanel25.add(balancecashlabel2);
+
+        SARlabel2.setForeground(new java.awt.Color(102, 102, 102));
+        SARlabel2.setText("SAR");
+        jPanel25.add(SARlabel2);
+
+        jPanel24.add(jPanel25);
+        jPanel25.setBounds(10, 30, 310, 30);
+
+        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel39.setText("membership");
+        jPanel24.add(jLabel39);
+        jLabel39.setBounds(100, 70, 130, 16);
+
+        tobenfit.add(jPanel24);
+        jPanel24.setBounds(20, 20, 330, 90);
+
+        reciever.setFocusable(false);
+        reciever.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recieverActionPerformed(evt);
+            }
+        });
+        tobenfit.add(reciever);
+        reciever.setBounds(20, 140, 330, 25);
+
+        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel28.setText("Amount : ");
+        tobenfit.add(jLabel28);
+        jLabel28.setBounds(20, 170, 110, 16);
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+        tobenfit.add(jTextField2);
+        jTextField2.setBounds(20, 190, 130, 24);
+
+        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel27.setLayout(new javax.swing.BoxLayout(jPanel27, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel37.setText("Total: ");
+        jPanel27.add(jLabel37);
+        jPanel27.add(totaltrans);
+
+        tobenfit.add(jPanel27);
+        jPanel27.setBounds(190, 190, 160, 20);
+
+        jLabel35.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel35.setText(" SAR");
+        jLabel35.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        tobenfit.add(jLabel35);
+        jLabel35.setBounds(150, 200, 30, 14);
+
+        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel26.setLayout(new javax.swing.BoxLayout(jPanel26, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel31.setText("Purpose : ");
+        jPanel26.add(jLabel31);
+
+        jLabel33.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel33.setText("(Optional)");
+        jPanel26.add(jLabel33);
+
+        tobenfit.add(jPanel26);
+        jPanel26.setBounds(20, 220, 190, 20);
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+        tobenfit.add(jTextField1);
+        jTextField1.setBounds(20, 240, 330, 25);
+
+        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel36.setText("Date:");
+        tobenfit.add(jLabel36);
+        jLabel36.setBounds(20, 270, 80, 16);
+
+        jTextField3.setText(formattert.format(date));
+        jTextField3.setEnabled(false);
+        tobenfit.add(jTextField3);
+        jTextField3.setBounds(20, 290, 330, 24);
+
+        sendtrans.setText("Send");
+        sendtrans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendtransActionPerformed(evt);
+            }
+        });
+        tobenfit.add(sendtrans);
+        sendtrans.setBounds(100, 320, 150, 30);
+
+        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel34.setText("Send to :    ");
+        tobenfit.add(jLabel34);
+        jLabel34.setBounds(20, 120, 120, 16);
+
+        tobenfit.setVisible(false);
+
+        jPanel23.add(tobenfit);
+        tobenfit.setBounds(80, 60, 380, 350);
+
+        betweenmyacc.setBackground(new java.awt.Color(255, 255, 255));
+        betweenmyacc.setLayout(null);
+
+        jPanel28.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel28.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
+        jPanel28.setForeground(new java.awt.Color(165, 165, 165));
+        jPanel28.setLayout(null);
+
+        balancelabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        balancelabel2.setForeground(new java.awt.Color(44, 62, 78));
+        balancelabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        balancelabel2.setText("Checking Account");
+        jPanel28.add(balancelabel2);
+        balancelabel2.setBounds(10, 10, 300, 24);
+
+        jPanel29.setOpaque(false);
+
+        balancecashlabel3.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        balancecashlabel3.setForeground(new java.awt.Color(28, 28, 28));
+        balancecashlabel3.setText(String.format("%.2f", checking.getBalance()));
+        jPanel29.add(balancecashlabel3);
+
+        SARlabel4.setForeground(new java.awt.Color(102, 102, 102));
+        SARlabel4.setText("SAR");
+        jPanel29.add(SARlabel4);
+
+        jPanel28.add(jPanel29);
+        jPanel29.setBounds(10, 40, 300, 30);
+
+        betweenmyacc.add(jPanel28);
+        jPanel28.setBounds(30, 20, 330, 100);
+
+        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel30.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
+        jPanel30.setForeground(new java.awt.Color(165, 165, 165));
+        jPanel30.setLayout(null);
+
+        jPanel31.setOpaque(false);
+
+        balancecashlabel4.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        balancecashlabel4.setForeground(new java.awt.Color(28, 28, 28));
+        balancecashlabel4.setText(String.format("%.2f", saving.getBalance()));
+        jPanel31.add(balancecashlabel4);
+
+        SARlabel5.setForeground(new java.awt.Color(102, 102, 102));
+        SARlabel5.setText("SAR");
+        jPanel31.add(SARlabel5);
+
+        jPanel30.add(jPanel31);
+        jPanel31.setBounds(10, 40, 300, 30);
+
+        balancelabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        balancelabel5.setForeground(new java.awt.Color(44, 62, 78));
+        balancelabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        balancelabel5.setText("Saving Account");
+        jPanel30.add(balancelabel5);
+        balancelabel5.setBounds(10, 10, 300, 24);
+
+        betweenmyacc.add(jPanel30);
+        jPanel30.setBounds(30, 200, 330, 100);
+
+        transactfield1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        transactfield1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        transactfield1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(226, 226, 226)));
+        transactfield1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                transactfield1KeyTyped(evt);
+            }
+        });
+        betweenmyacc.add(transactfield1);
+        transactfield1.setBounds(110, 140, 170, 40);
+
+        jButton8.setText("v");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        betweenmyacc.add(jButton8);
+        jButton8.setBounds(30, 150, 60, 32);
+
+        jButton9.setText("^");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        betweenmyacc.add(jButton9);
+        jButton9.setBounds(300, 150, 60, 32);
+
+        betweenmyacc.setVisible(false);
+
+        jPanel23.add(betweenmyacc);
+        betweenmyacc.setBounds(70, 60, 390, 350);
+
+        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel38.setText("Transact:");
+        jPanel23.add(jLabel38);
+        jLabel38.setBounds(100, 10, 120, 20);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Between my accounts", "To a beneficiary" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+        jPanel23.add(jComboBox1);
+        jComboBox1.setBounds(100, 30, 330, 26);
+
+        transactionpanel.add(jPanel23);
+        jPanel23.setBounds(10, 160, 560, 430);
+
+        dashboard.add(transactionpanel);
+        transactionpanel.setBounds(0, 0, 580, 600);
+
+        loanpanel.setBackground(new java.awt.Color(240, 240, 240));
+        loanpanel.setForeground(new java.awt.Color(240, 240, 240));
+        loanpanel.setLayout(null);
+
+        jPanel19.setBackground(new java.awt.Color(70, 94, 114));
+        jPanel19.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 2, 0, new java.awt.Color(50, 72, 92)));
+        jPanel19.setLayout(null);
+
+        jLabel19.setFont(new java.awt.Font("HelvLight", 0, 36)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/labels/loanlabelwhite.png"))); // NOI18N
+        jPanel19.add(jLabel19);
+        jLabel19.setBounds(20, 25, 200, 47);
+
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel20.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(248, 248, 248)));
+        jPanel20.setLayout(null);
+
+        jLabel20.setFont(new java.awt.Font("Gill Sans MT", 0, 20)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel20.setText("Welcome back, "+user.getFirstname()+" "+ user.getLastname());
+        jPanel20.add(jLabel20);
+        jLabel20.setBounds(20, 10, 550, 30);
+
+        logindate3.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        logindate3.setForeground(new java.awt.Color(153, 153, 153));
+        logindate3.setText("Logged in at "+ formatter.format(date));
+        jPanel20.add(logindate3);
+        logindate3.setBounds(25, 35, 220, 16);
+
+        jPanel19.add(jPanel20);
+        jPanel20.setBounds(0, 90, 590, 60);
+
+        loanpanel.add(jPanel19);
+        jPanel19.setBounds(0, 0, 590, 150);
+
+        jPanel33.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel33.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(241, 241, 241)));
+        jPanel33.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel33.setLayout(null);
+
+        jLabel41.setText("Monthly payment: ");
+        jPanel33.add(jLabel41);
+        jLabel41.setBounds(100, 190, 120, 16);
+
+        jButton10.setText("Pay");
+        jPanel33.add(jButton10);
+        jButton10.setBounds(320, 190, 51, 25);
+
+        jLabel42.setText("Loan ID:");
+        jPanel33.add(jLabel42);
+        jLabel42.setBounds(100, 140, 48, 16);
+
+        jLabel43.setText("Benefit rate:");
+        jPanel33.add(jLabel43);
+        jLabel43.setBounds(100, 160, 100, 20);
+
+        jPanel34.setOpaque(false);
+
+        jLabel27.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel27.setText("In debt:");
+        jPanel34.add(jLabel27);
+
+        jLabel44.setFont(new java.awt.Font("Lato", 0, 48)); // NOI18N
+        jLabel44.setText("10000");
+        jPanel34.add(jLabel44);
+
+        jLabel45.setText("  SAR");
+        jPanel34.add(jLabel45);
+
+        jPanel33.add(jPanel34);
+        jPanel34.setBounds(110, 60, 330, 60);
+
+        jLabel46.setText("You are eligable for one loan only.");
+        jPanel33.add(jLabel46);
+        jLabel46.setBounds(170, 320, 220, 16);
+
+        loanpanel.add(jPanel33);
+        jPanel33.setBounds(10, 160, 560, 430);
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(241, 241, 241)));
+        jPanel16.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel16.setLayout(null);
+
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/loanicon.png"))); // NOI18N
+        jPanel16.add(jLabel40);
+        jLabel40.setBounds(70, 50, 420, 80);
+
+        jPanel32.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel32.setOpaque(false);
+
+        jLabel25.setFont(new java.awt.Font("Lato", 0, 36)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("100000");
+        jPanel32.add(jLabel25);
+
+        jLabel3.setText("  SAR");
+        jPanel32.add(jLabel3);
+
+        jPanel16.add(jPanel32);
+        jPanel32.setBounds(160, 90, 310, 50);
+
+        jLabel13.setText("Benefit rate: ");
+        jPanel16.add(jLabel13);
+        jLabel13.setBounds(90, 190, 160, 16);
+
+        jLabel15.setText("Monthly payment: ");
+        jPanel16.add(jLabel15);
+        jLabel15.setBounds(90, 210, 150, 16);
+
+        jLabel16.setText("Total: ");
+        jPanel16.add(jLabel16);
+        jLabel16.setBounds(90, 230, 34, 16);
+
+        jLabel24.setText("Do you want to apply for the loan?");
+        jPanel16.add(jLabel24);
+        jLabel24.setBounds(170, 270, 210, 16);
+
+        loanpanel.add(jPanel16);
+        jPanel16.setBounds(10, 160, 560, 430);
+
+        dashboard.add(loanpanel);
+        loanpanel.setBounds(0, 0, 580, 600);
+
+        mainpanel.setBackground(new java.awt.Color(240, 240, 240));
+        mainpanel.setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(70, 94, 114));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 2, 0, new java.awt.Color(50, 72, 92)));
+        jPanel1.setLayout(null);
+
+        jLabel4.setFont(new java.awt.Font("HelvLight", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/labels/dashboardlabelwhite.png"))); // NOI18N
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(20, 25, 200, 47);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(248, 248, 248)));
+        jPanel6.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Gill Sans MT", 0, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Welcome back, "+user.getFirstname()+" "+ user.getLastname());
+        jPanel6.add(jLabel2);
+        jLabel2.setBounds(20, 10, 550, 30);
+
+        logindate.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        logindate.setForeground(new java.awt.Color(153, 153, 153));
+        logindate.setText("Logged in at "+ formatter.format(date));
+        jPanel6.add(logindate);
+        logindate.setBounds(25, 35, 220, 16);
+
+        jPanel1.add(jPanel6);
+        jPanel6.setBounds(0, 90, 590, 60);
+
+        mainpanel.add(jPanel1);
+        jPanel1.setBounds(0, 0, 590, 150);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
+        jPanel2.setForeground(new java.awt.Color(165, 165, 165));
+        jPanel2.setLayout(null);
+
+        jPanel3.setOpaque(false);
+
+        balancecashlabel.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        balancecashlabel.setForeground(new java.awt.Color(28, 28, 28));
+        balancecashlabel.setText(String.format("%.2f", saving.getBalance()));
+        jPanel3.add(balancecashlabel);
+
+        SARlabel.setForeground(new java.awt.Color(102, 102, 102));
+        SARlabel.setText("SAR");
+        jPanel3.add(SARlabel);
+
+        jPanel2.add(jPanel3);
+        jPanel3.setBounds(10, 30, 250, 30);
+
+        balancelabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        balancelabel.setForeground(new java.awt.Color(44, 62, 78));
+        balancelabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        balancelabel.setText("Saving Account: "+saving.getAcc_ID());
+        jPanel2.add(balancelabel);
+        balancelabel.setBounds(10, 10, 250, 24);
+
+        mainpanel.add(jPanel2);
+        jPanel2.setBounds(300, 160, 270, 80);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
+        jPanel5.setLayout(null);
+
+        summary.setForeground(new java.awt.Color(52, 92, 118));
+        summary.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Transaction ID", "From", "Amount", "To"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        summary.setGridColor(new java.awt.Color(255, 255, 255));
+        summary.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        summary.setRowHeight(20);
+        summary.setSelectionBackground(new java.awt.Color(75, 112, 136));
+        jScrollPane1.setViewportView(summary);
+        if (summary.getColumnModel().getColumnCount() > 0) {
+            summary.getColumnModel().getColumn(0).setPreferredWidth(20);
+        }
+
+        jPanel5.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 40, 540, 130);
+
+        jButton2.setText("Full Summary");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton2);
+        jButton2.setBounds(220, 180, 110, 20);
+
+        briefsummarylabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        briefsummarylabel.setForeground(new java.awt.Color(44, 62, 78));
+        briefsummarylabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        briefsummarylabel.setText("Breif Summary");
+        jPanel5.add(briefsummarylabel);
+        briefsummarylabel.setBounds(10, 6, 540, 24);
+
+        mainpanel.add(jPanel5);
+        jPanel5.setBounds(10, 250, 560, 210);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
+        jPanel7.setForeground(new java.awt.Color(165, 165, 165));
+        jPanel7.setLayout(null);
+
+        balancelabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        balancelabel1.setForeground(new java.awt.Color(44, 62, 78));
+        balancelabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        balancelabel1.setText("Checking Account: "+checking.getAcc_ID());
+        jPanel7.add(balancelabel1);
+        balancelabel1.setBounds(10, 10, 260, 24);
+
+        jPanel8.setOpaque(false);
+
+        balancecashlabel1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        balancecashlabel1.setForeground(new java.awt.Color(28, 28, 28));
+        balancecashlabel1.setText(String.format("%.2f", checking.getBalance()));
+        jPanel8.add(balancecashlabel1);
+
+        SARlabel1.setForeground(new java.awt.Color(102, 102, 102));
+        SARlabel1.setText("SAR");
+        jPanel8.add(SARlabel1);
+
+        jPanel7.add(jPanel8);
+        jPanel8.setBounds(10, 30, 260, 30);
+
+        mainpanel.add(jPanel7);
+        jPanel7.setBounds(10, 160, 280, 80);
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
+        jPanel9.setLayout(null);
+
+        depositbutton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/dashboard/deposi.png"))); // NOI18N
+        depositbutton1.setToolTipText("Deposit");
+        depositbutton1.setBorder(null);
+        depositbutton1.setBorderPainted(false);
+        depositbutton1.setContentAreaFilled(false);
+        depositbutton1.setFocusable(false);
+        depositbutton1.setRolloverEnabled(true);
+        depositbutton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/dashboard/deposipressed.png"))); // NOI18N
+        depositbutton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositbutton1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(depositbutton1);
+        depositbutton1.setBounds(420, 87, 30, 30);
+
+        withdrawbutton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/dashboard/with.png"))); // NOI18N
+        withdrawbutton1.setToolTipText("Withdraw");
+        withdrawbutton1.setBorder(null);
+        withdrawbutton1.setBorderPainted(false);
+        withdrawbutton1.setContentAreaFilled(false);
+        withdrawbutton1.setFocusable(false);
+        withdrawbutton1.setRolloverEnabled(true);
+        withdrawbutton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/dashboard/withpressed.png"))); // NOI18N
+        withdrawbutton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawbutton1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(withdrawbutton1);
+        withdrawbutton1.setBounds(360, 90, 30, 30);
+
+        SARlabel3.setForeground(new java.awt.Color(102, 102, 102));
+        SARlabel3.setText("SAR");
+        jPanel9.add(SARlabel3);
+        SARlabel3.setBounds(500, 60, 24, 16);
+
+        transactfield.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        transactfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        transactfield.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(226, 226, 226)));
+        transactfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                transactfieldKeyTyped(evt);
+            }
+        });
+        jPanel9.add(transactfield);
+        transactfield.setBounds(280, 30, 250, 50);
+
+        jLabel8.setText("Account: ");
+        jPanel9.add(jLabel8);
+        jLabel8.setBounds(20, 45, 60, 20);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Checking", "Saving" }));
+        jComboBox2.setBorder(null);
+        jComboBox2.setFocusable(false);
+        jPanel9.add(jComboBox2);
+        jComboBox2.setBounds(80, 45, 170, 20);
+
+        withdrawsuccess.setForeground(new java.awt.Color(208, 0, 0));
+        withdrawsuccess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        withdrawsuccess.setText("You withdrawed 100 SAR");
+        withdrawsuccess.setVisible(false);
+        jPanel9.add(withdrawsuccess);
+        withdrawsuccess.setBounds(20, 90, 220, 16);
+
+        depositsuccess.setForeground(new java.awt.Color(0, 102, 51));
+        depositsuccess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        depositsuccess.setText("You deposited 100 SAR");
+        depositsuccess.setVisible(false);
+        jPanel9.add(depositsuccess);
+        depositsuccess.setBounds(20, 90, 220, 16);
+
+        balancelabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        balancelabel4.setForeground(new java.awt.Color(44, 62, 78));
+        balancelabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        balancelabel4.setText("Deposit / Withdraw");
+        jPanel9.add(balancelabel4);
+        balancelabel4.setBounds(20, 10, 240, 18);
+
+        mainpanel.add(jPanel9);
+        jPanel9.setBounds(10, 470, 560, 130);
+
+        dashboard.add(mainpanel);
+        mainpanel.setBounds(0, 0, 580, 600);
 
         accountpanel.setBackground(new java.awt.Color(240, 240, 240));
         accountpanel.setLayout(null);
@@ -863,602 +1521,6 @@ public class WansesFrame extends javax.swing.JFrame {
 
         dashboard.add(addben);
         addben.setBounds(0, 0, 580, 600);
-
-        transactionpanel.setBackground(new java.awt.Color(240, 240, 240));
-        transactionpanel.setForeground(new java.awt.Color(240, 240, 240));
-        transactionpanel.setLayout(null);
-
-        jPanel11.setBackground(new java.awt.Color(70, 94, 114));
-        jPanel11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 2, 0, new java.awt.Color(50, 72, 92)));
-        jPanel11.setLayout(null);
-
-        jLabel11.setFont(new java.awt.Font("HelvLight", 0, 36)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/labels/transactionlabelwhite.png"))); // NOI18N
-        jPanel11.add(jLabel11);
-        jLabel11.setBounds(20, 25, 200, 47);
-
-        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(248, 248, 248)));
-        jPanel12.setLayout(null);
-
-        jLabel18.setFont(new java.awt.Font("Gill Sans MT", 0, 20)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel18.setText("Welcome back, "+user.getFirstname()+" "+ user.getLastname());
-        jPanel12.add(jLabel18);
-        jLabel18.setBounds(20, 10, 550, 30);
-
-        logindate2.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        logindate2.setForeground(new java.awt.Color(153, 153, 153));
-        logindate2.setText("Logged in at "+ formatter.format(date));
-        jPanel12.add(logindate2);
-        logindate2.setBounds(25, 35, 220, 16);
-
-        jPanel11.add(jPanel12);
-        jPanel12.setBounds(0, 90, 590, 60);
-
-        transactionpanel.add(jPanel11);
-        jPanel11.setBounds(0, 0, 590, 150);
-
-        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel23.setLayout(null);
-
-        betweenmyacc.setBackground(new java.awt.Color(255, 255, 255));
-        betweenmyacc.setLayout(null);
-
-        jPanel28.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel28.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
-        jPanel28.setForeground(new java.awt.Color(165, 165, 165));
-        jPanel28.setLayout(null);
-
-        balancelabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        balancelabel2.setForeground(new java.awt.Color(44, 62, 78));
-        balancelabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        balancelabel2.setText("Checking Account");
-        jPanel28.add(balancelabel2);
-        balancelabel2.setBounds(10, 10, 300, 24);
-
-        jPanel29.setOpaque(false);
-
-        balancecashlabel3.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        balancecashlabel3.setForeground(new java.awt.Color(28, 28, 28));
-        balancecashlabel3.setText(String.format("%.2f", checking.getBalance()));
-        jPanel29.add(balancecashlabel3);
-
-        SARlabel4.setForeground(new java.awt.Color(102, 102, 102));
-        SARlabel4.setText("SAR");
-        jPanel29.add(SARlabel4);
-
-        jPanel28.add(jPanel29);
-        jPanel29.setBounds(10, 40, 300, 30);
-
-        betweenmyacc.add(jPanel28);
-        jPanel28.setBounds(30, 20, 330, 100);
-
-        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel30.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
-        jPanel30.setForeground(new java.awt.Color(165, 165, 165));
-        jPanel30.setLayout(null);
-
-        jPanel31.setOpaque(false);
-
-        balancecashlabel4.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        balancecashlabel4.setForeground(new java.awt.Color(28, 28, 28));
-        balancecashlabel4.setText(String.format("%.2f", saving.getBalance()));
-        jPanel31.add(balancecashlabel4);
-
-        SARlabel5.setForeground(new java.awt.Color(102, 102, 102));
-        SARlabel5.setText("SAR");
-        jPanel31.add(SARlabel5);
-
-        jPanel30.add(jPanel31);
-        jPanel31.setBounds(10, 40, 300, 30);
-
-        balancelabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        balancelabel5.setForeground(new java.awt.Color(44, 62, 78));
-        balancelabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        balancelabel5.setText("Saving Account");
-        jPanel30.add(balancelabel5);
-        balancelabel5.setBounds(10, 10, 300, 24);
-
-        betweenmyacc.add(jPanel30);
-        jPanel30.setBounds(30, 200, 330, 100);
-
-        transactfield1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        transactfield1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        transactfield1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(226, 226, 226)));
-        transactfield1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                transactfield1KeyTyped(evt);
-            }
-        });
-        betweenmyacc.add(transactfield1);
-        transactfield1.setBounds(110, 140, 170, 40);
-
-        jButton8.setText("v");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        betweenmyacc.add(jButton8);
-        jButton8.setBounds(30, 150, 60, 32);
-
-        jButton9.setText("^");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        betweenmyacc.add(jButton9);
-        jButton9.setBounds(300, 150, 60, 32);
-
-        betweenmyacc.setVisible(false);
-
-        jPanel23.add(betweenmyacc);
-        betweenmyacc.setBounds(70, 60, 390, 350);
-
-        tobenfit.setBackground(new java.awt.Color(255, 255, 255));
-        tobenfit.setLayout(null);
-
-        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel24.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
-        jPanel24.setForeground(new java.awt.Color(165, 165, 165));
-        jPanel24.setLayout(null);
-
-        balancelabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        balancelabel3.setForeground(new java.awt.Color(44, 62, 78));
-        balancelabel3.setText("Checking Account");
-        jPanel24.add(balancelabel3);
-        balancelabel3.setBounds(100, 10, 130, 24);
-
-        jPanel25.setOpaque(false);
-
-        balancecashlabel2.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        balancecashlabel2.setForeground(new java.awt.Color(28, 28, 28));
-        balancecashlabel2.setText(String.format("%.2f", checking.getBalance()));
-        jPanel25.add(balancecashlabel2);
-
-        SARlabel2.setForeground(new java.awt.Color(102, 102, 102));
-        SARlabel2.setText("SAR");
-        jPanel25.add(SARlabel2);
-
-        jPanel24.add(jPanel25);
-        jPanel25.setBounds(10, 30, 310, 30);
-
-        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel39.setText("membership");
-        jPanel24.add(jLabel39);
-        jLabel39.setBounds(100, 70, 130, 16);
-
-        tobenfit.add(jPanel24);
-        jPanel24.setBounds(20, 20, 330, 90);
-
-        reciever.setFocusable(false);
-        reciever.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recieverActionPerformed(evt);
-            }
-        });
-        tobenfit.add(reciever);
-        reciever.setBounds(20, 140, 330, 25);
-
-        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel28.setText("Amount : ");
-        tobenfit.add(jLabel28);
-        jLabel28.setBounds(20, 170, 110, 16);
-
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField2KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField2KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField2KeyTyped(evt);
-            }
-        });
-        tobenfit.add(jTextField2);
-        jTextField2.setBounds(20, 190, 130, 24);
-
-        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel27.setLayout(new javax.swing.BoxLayout(jPanel27, javax.swing.BoxLayout.LINE_AXIS));
-
-        jLabel37.setText("Total: ");
-        jPanel27.add(jLabel37);
-        jPanel27.add(totaltrans);
-
-        tobenfit.add(jPanel27);
-        jPanel27.setBounds(190, 190, 160, 20);
-
-        jLabel35.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel35.setText(" SAR");
-        jLabel35.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        tobenfit.add(jLabel35);
-        jLabel35.setBounds(150, 200, 30, 14);
-
-        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel26.setLayout(new javax.swing.BoxLayout(jPanel26, javax.swing.BoxLayout.LINE_AXIS));
-
-        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel31.setText("Purpose : ");
-        jPanel26.add(jLabel31);
-
-        jLabel33.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel33.setText("(Optional)");
-        jPanel26.add(jLabel33);
-
-        tobenfit.add(jPanel26);
-        jPanel26.setBounds(20, 220, 190, 20);
-
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
-            }
-        });
-        tobenfit.add(jTextField1);
-        jTextField1.setBounds(20, 240, 330, 25);
-
-        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel36.setText("Date:");
-        tobenfit.add(jLabel36);
-        jLabel36.setBounds(20, 270, 80, 16);
-
-        jTextField3.setText(formattert.format(date));
-        jTextField3.setEnabled(false);
-        tobenfit.add(jTextField3);
-        jTextField3.setBounds(20, 290, 330, 24);
-
-        sendtrans.setText("Send");
-        sendtrans.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendtransActionPerformed(evt);
-            }
-        });
-        tobenfit.add(sendtrans);
-        sendtrans.setBounds(100, 320, 150, 30);
-
-        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel34.setText("Send to :    ");
-        tobenfit.add(jLabel34);
-        jLabel34.setBounds(20, 120, 120, 16);
-
-        tobenfit.setVisible(false);
-
-        jPanel23.add(tobenfit);
-        tobenfit.setBounds(80, 60, 380, 350);
-
-        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel38.setText("Transact:");
-        jPanel23.add(jLabel38);
-        jLabel38.setBounds(100, 10, 120, 20);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Between my accounts", "To a beneficiary" }));
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
-            }
-        });
-        jPanel23.add(jComboBox1);
-        jComboBox1.setBounds(100, 30, 330, 26);
-
-        transactionpanel.add(jPanel23);
-        jPanel23.setBounds(10, 160, 560, 430);
-
-        dashboard.add(transactionpanel);
-        transactionpanel.setBounds(0, 0, 580, 600);
-
-        mainpanel.setBackground(new java.awt.Color(240, 240, 240));
-        mainpanel.setLayout(null);
-
-        jPanel1.setBackground(new java.awt.Color(70, 94, 114));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 2, 0, new java.awt.Color(50, 72, 92)));
-        jPanel1.setLayout(null);
-
-        jLabel4.setFont(new java.awt.Font("HelvLight", 0, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/labels/dashboardlabelwhite.png"))); // NOI18N
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 25, 200, 47);
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(248, 248, 248)));
-        jPanel6.setLayout(null);
-
-        jLabel2.setFont(new java.awt.Font("Gill Sans MT", 0, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Welcome back, "+user.getFirstname()+" "+ user.getLastname());
-        jPanel6.add(jLabel2);
-        jLabel2.setBounds(20, 10, 550, 30);
-
-        logindate.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        logindate.setForeground(new java.awt.Color(153, 153, 153));
-        logindate.setText("Logged in at "+ formatter.format(date));
-        jPanel6.add(logindate);
-        logindate.setBounds(25, 35, 220, 16);
-
-        jPanel1.add(jPanel6);
-        jPanel6.setBounds(0, 90, 590, 60);
-
-        mainpanel.add(jPanel1);
-        jPanel1.setBounds(0, 0, 590, 150);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
-        jPanel2.setForeground(new java.awt.Color(165, 165, 165));
-        jPanel2.setLayout(null);
-
-        jPanel3.setOpaque(false);
-
-        balancecashlabel.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        balancecashlabel.setForeground(new java.awt.Color(28, 28, 28));
-        balancecashlabel.setText(String.format("%.2f", saving.getBalance()));
-        jPanel3.add(balancecashlabel);
-
-        SARlabel.setForeground(new java.awt.Color(102, 102, 102));
-        SARlabel.setText("SAR");
-        jPanel3.add(SARlabel);
-
-        jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 30, 250, 30);
-
-        balancelabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        balancelabel.setForeground(new java.awt.Color(44, 62, 78));
-        balancelabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        balancelabel.setText("Saving Account: "+saving.getAcc_ID());
-        jPanel2.add(balancelabel);
-        balancelabel.setBounds(10, 10, 250, 24);
-
-        mainpanel.add(jPanel2);
-        jPanel2.setBounds(300, 160, 270, 80);
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
-        jPanel5.setLayout(null);
-
-        summary.setForeground(new java.awt.Color(52, 92, 118));
-        summary.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Transaction ID", "From", "Amount", "To"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        summary.setGridColor(new java.awt.Color(255, 255, 255));
-        summary.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        summary.setRowHeight(20);
-        summary.setSelectionBackground(new java.awt.Color(75, 112, 136));
-        jScrollPane1.setViewportView(summary);
-        if (summary.getColumnModel().getColumnCount() > 0) {
-            summary.getColumnModel().getColumn(0).setPreferredWidth(20);
-        }
-
-        jPanel5.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 40, 540, 130);
-
-        jButton2.setText("Full Summary");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jButton2);
-        jButton2.setBounds(220, 180, 110, 20);
-
-        briefsummarylabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        briefsummarylabel.setForeground(new java.awt.Color(44, 62, 78));
-        briefsummarylabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        briefsummarylabel.setText("Breif Summary");
-        jPanel5.add(briefsummarylabel);
-        briefsummarylabel.setBounds(10, 6, 540, 24);
-
-        mainpanel.add(jPanel5);
-        jPanel5.setBounds(10, 250, 560, 210);
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
-        jPanel7.setForeground(new java.awt.Color(165, 165, 165));
-        jPanel7.setLayout(null);
-
-        balancelabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        balancelabel1.setForeground(new java.awt.Color(44, 62, 78));
-        balancelabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        balancelabel1.setText("Checking Account: "+checking.getAcc_ID());
-        jPanel7.add(balancelabel1);
-        balancelabel1.setBounds(10, 10, 260, 24);
-
-        jPanel8.setOpaque(false);
-
-        balancecashlabel1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        balancecashlabel1.setForeground(new java.awt.Color(28, 28, 28));
-        balancecashlabel1.setText(String.format("%.2f", checking.getBalance()));
-        jPanel8.add(balancecashlabel1);
-
-        SARlabel1.setForeground(new java.awt.Color(102, 102, 102));
-        SARlabel1.setText("SAR");
-        jPanel8.add(SARlabel1);
-
-        jPanel7.add(jPanel8);
-        jPanel8.setBounds(10, 30, 260, 30);
-
-        mainpanel.add(jPanel7);
-        jPanel7.setBounds(10, 160, 280, 80);
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(236, 236, 236)));
-        jPanel9.setLayout(null);
-
-        depositbutton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/dashboard/deposi.png"))); // NOI18N
-        depositbutton1.setToolTipText("Deposit");
-        depositbutton1.setBorder(null);
-        depositbutton1.setBorderPainted(false);
-        depositbutton1.setContentAreaFilled(false);
-        depositbutton1.setFocusable(false);
-        depositbutton1.setRolloverEnabled(true);
-        depositbutton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/dashboard/deposipressed.png"))); // NOI18N
-        depositbutton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depositbutton1ActionPerformed(evt);
-            }
-        });
-        jPanel9.add(depositbutton1);
-        depositbutton1.setBounds(420, 87, 30, 30);
-
-        withdrawbutton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/dashboard/with.png"))); // NOI18N
-        withdrawbutton1.setToolTipText("Withdraw");
-        withdrawbutton1.setBorder(null);
-        withdrawbutton1.setBorderPainted(false);
-        withdrawbutton1.setContentAreaFilled(false);
-        withdrawbutton1.setFocusable(false);
-        withdrawbutton1.setRolloverEnabled(true);
-        withdrawbutton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/dashboard/withpressed.png"))); // NOI18N
-        withdrawbutton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                withdrawbutton1ActionPerformed(evt);
-            }
-        });
-        jPanel9.add(withdrawbutton1);
-        withdrawbutton1.setBounds(360, 90, 30, 30);
-
-        SARlabel3.setForeground(new java.awt.Color(102, 102, 102));
-        SARlabel3.setText("SAR");
-        jPanel9.add(SARlabel3);
-        SARlabel3.setBounds(500, 60, 24, 16);
-
-        transactfield.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        transactfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        transactfield.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(226, 226, 226)));
-        transactfield.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                transactfieldKeyTyped(evt);
-            }
-        });
-        jPanel9.add(transactfield);
-        transactfield.setBounds(280, 30, 250, 50);
-
-        jLabel8.setText("Account: ");
-        jPanel9.add(jLabel8);
-        jLabel8.setBounds(20, 45, 60, 20);
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Checking", "Saving" }));
-        jComboBox2.setBorder(null);
-        jComboBox2.setFocusable(false);
-        jPanel9.add(jComboBox2);
-        jComboBox2.setBounds(80, 45, 170, 20);
-
-        withdrawsuccess.setForeground(new java.awt.Color(208, 0, 0));
-        withdrawsuccess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        withdrawsuccess.setText("You withdrawed 100 SAR");
-        withdrawsuccess.setVisible(false);
-        jPanel9.add(withdrawsuccess);
-        withdrawsuccess.setBounds(20, 90, 220, 16);
-
-        depositsuccess.setForeground(new java.awt.Color(0, 102, 51));
-        depositsuccess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        depositsuccess.setText("You deposited 100 SAR");
-        depositsuccess.setVisible(false);
-        jPanel9.add(depositsuccess);
-        depositsuccess.setBounds(20, 90, 220, 16);
-
-        balancelabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        balancelabel4.setForeground(new java.awt.Color(44, 62, 78));
-        balancelabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        balancelabel4.setText("Deposit / Withdraw");
-        jPanel9.add(balancelabel4);
-        balancelabel4.setBounds(20, 10, 240, 18);
-
-        mainpanel.add(jPanel9);
-        jPanel9.setBounds(10, 470, 560, 130);
-
-        dashboard.add(mainpanel);
-        mainpanel.setBounds(0, 0, 580, 600);
-
-        loanpanel.setBackground(new java.awt.Color(240, 240, 240));
-        loanpanel.setForeground(new java.awt.Color(240, 240, 240));
-        loanpanel.setLayout(null);
-
-        jPanel19.setBackground(new java.awt.Color(70, 94, 114));
-        jPanel19.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 2, 0, new java.awt.Color(50, 72, 92)));
-        jPanel19.setLayout(null);
-
-        jLabel19.setFont(new java.awt.Font("HelvLight", 0, 36)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/labels/loanlabelwhite.png"))); // NOI18N
-        jPanel19.add(jLabel19);
-        jLabel19.setBounds(20, 25, 200, 47);
-
-        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel20.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(248, 248, 248)));
-        jPanel20.setLayout(null);
-
-        jLabel20.setFont(new java.awt.Font("Gill Sans MT", 0, 20)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel20.setText("Welcome back, "+user.getFirstname()+" "+ user.getLastname());
-        jPanel20.add(jLabel20);
-        jLabel20.setBounds(20, 10, 550, 30);
-
-        logindate3.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        logindate3.setForeground(new java.awt.Color(153, 153, 153));
-        logindate3.setText("Logged in at "+ formatter.format(date));
-        jPanel20.add(logindate3);
-        logindate3.setBounds(25, 35, 220, 16);
-
-        jPanel19.add(jPanel20);
-        jPanel20.setBounds(0, 90, 590, 60);
-
-        loanpanel.add(jPanel19);
-        jPanel19.setBounds(0, 0, 590, 150);
-
-        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel16.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(241, 241, 241)));
-        jPanel16.setLayout(null);
-
-        jLabel15.setText("Amount: ");
-        jPanel16.add(jLabel15);
-        jLabel15.setBounds(30, 100, 60, 20);
-
-        jLabel16.setText("Percent monthly: ");
-        jPanel16.add(jLabel16);
-        jLabel16.setBounds(200, 100, 110, 20);
-
-        jLabel24.setText("20%");
-        jPanel16.add(jLabel24);
-        jLabel24.setBounds(310, 100, 30, 20);
-
-        jLabel25.setText("Membership: ");
-        jPanel16.add(jLabel25);
-        jLabel25.setBounds(30, 70, 120, 16);
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wansesbank/images/loantable.jpg"))); // NOI18N
-        jPanel16.add(jLabel13);
-        jLabel13.setBounds(70, 190, 410, 190);
-
-        jLabel27.setText("jLabel27");
-        jPanel16.add(jLabel27);
-        jLabel27.setBounds(110, 150, 320, 16);
-
-        jLabel3.setText("36000 SAR");
-        jPanel16.add(jLabel3);
-        jLabel3.setBounds(100, 100, 80, 20);
-
-        loanpanel.add(jPanel16);
-        jPanel16.setBounds(10, 160, 560, 430);
-
-        dashboard.add(loanpanel);
-        loanpanel.setBounds(0, 0, 580, 600);
 
         contentpanel.add(dashboard);
         dashboard.setBounds(260, 0, 580, 600);
@@ -2106,6 +2168,7 @@ public class WansesFrame extends javax.swing.JFrame {
                 String recievername = fullnamearray[reciever.getSelectedIndex()];
  
                 statement.executeUpdate("INSERT INTO TRANSACTS(SENDER_ID, RECIEVER_ID, PURPOSE, TRANSDATE, AMOUNT, SENDER_NAME, RECIEVER_NAME, FEE) VALUES("+senderid+","+receiverid+",'"+purpose+"','"+tdate+"',"+amountnofee+",'"+sendername+"','"+recievername+"',"+fee+")");
+                statement.executeUpdate("UPDATE BANK SET BR_BALANCE=BR_BALANCE+"+fee+"WHERE BANK_ID= 1");
                 statement.executeUpdate("UPDATE ACCOUNT SET BALANCE=BALANCE-"+amount+" WHERE ACC_ID="+senderid);
                 statement.executeUpdate("UPDATE ACCOUNT SET BALANCE=BALANCE+"+amount+" WHERE ACC_ID="+receiverid);
                 updateBalance();
@@ -2336,6 +2399,7 @@ public class WansesFrame extends javax.swing.JFrame {
     private javax.swing.JPanel incomepanel;
     private javax.swing.JTextField incomeupdate;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -2380,6 +2444,13 @@ public class WansesFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2410,6 +2481,9 @@ public class WansesFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
