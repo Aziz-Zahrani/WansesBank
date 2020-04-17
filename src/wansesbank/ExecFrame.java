@@ -5,12 +5,14 @@
  */
 package wansesbank;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils; //check the rs2xml.jar file + i've imported that file (Done) "i used this for the JTable mainly"
 import javax.swing.JScrollPane;
@@ -79,7 +81,9 @@ public class ExecFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e);
         }
-
+        URL iconURL = getClass().getResource("/wansesbank/images/appicon.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        this.setIconImage(icon.getImage());
         initComponents();
 
         
@@ -110,10 +114,6 @@ public class ExecFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         setTitle("Employee Panel");
         setMinimumSize(new java.awt.Dimension(835, 520));
@@ -147,7 +147,7 @@ public class ExecFrame extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        jButton1.setText("Check Information");
+        jButton1.setText("Refresh the table");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -217,26 +217,7 @@ public class ExecFrame extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Manager Panel");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(210, 10, 590, 47);
-
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel3.setFocusable(false);
-        jPanel3.setOpaque(false);
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Employee Name: "+user.getFirstname()+" "+user.getLastname()+"  |  ");
-        jPanel3.add(jLabel1);
-
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Employee ID: "+user.getEmp_ID()+"  |  ");
-        jPanel3.add(jLabel3);
-
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Employee Role: "+myEmpRole);
-        jPanel3.add(jLabel2);
-
-        jPanel2.add(jPanel3);
-        jPanel3.setBounds(210, 60, 590, 30);
+        jLabel6.setBounds(210, 10, 590, 70);
 
         MainCenterPane.add(jPanel2);
         jPanel2.setBounds(0, 0, 1010, 90);
@@ -338,16 +319,12 @@ public class ExecFrame extends javax.swing.JFrame {
     private javax.swing.JButton deletebutton;
     private javax.swing.JTextField filterfield;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton updatebutton;
@@ -357,7 +334,7 @@ public class ExecFrame extends javax.swing.JFrame {
                      try {
                 Connection connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
                 Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery("SELECT EMP_ID, CONCAT(FIRSTNAME,' ',LASTNAME) as 'Full Name',Emprole, USERNAME, PASSWORD FROM EMPLOYEE");
+                ResultSet resultset = statement.executeQuery("SELECT EMP_ID, CONCAT(FIRSTNAME,' ',LASTNAME) as 'Full Name',Emprole as 'Employee Role', USERNAME, PASSWORD FROM EMPLOYEE");
                 //ResultSet resultset2 = statement.executeQuery("SELECT BALANCE FROM CUSTOMER");
                 
             ResultSetMetaData meta = resultset.getMetaData();

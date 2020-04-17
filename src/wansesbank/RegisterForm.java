@@ -138,9 +138,9 @@ public class RegisterForm extends javax.swing.JDialog {
         jPanel3.add(fullname);
         fullname.setBounds(20, 30, 70, 25);
 
-        incomelabel.setText("Yearly Income* :");
+        incomelabel.setText("Monthly Income:");
         jPanel3.add(incomelabel);
-        incomelabel.setBounds(20, 150, 91, 25);
+        incomelabel.setBounds(20, 150, 100, 25);
         jPanel3.add(phonefield);
         phonefield.setBounds(120, 120, 160, 24);
 

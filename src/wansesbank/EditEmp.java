@@ -5,6 +5,7 @@
  */
 package wansesbank;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import net.proteanit.sql.DbUtils;
 
@@ -65,7 +67,9 @@ public class EditEmp extends javax.swing.JDialog {
         initComponents();
         empid=emp;
         userRetrieve();
-        
+                URL iconURL = getClass().getResource("/wansesbank/images/appicon.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        this.setIconImage(icon.getImage());
     }
 
    

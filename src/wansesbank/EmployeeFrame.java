@@ -5,12 +5,14 @@
  */
 package wansesbank;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils; //check the rs2xml.jar file + i've imported that file (Done) "i used this for the JTable mainly"
 import javax.swing.JScrollPane;
@@ -86,6 +88,10 @@ public class EmployeeFrame extends javax.swing.JFrame {
         else
             CEObut.setVisible(false);
         
+                URL iconURL = getClass().getResource("/wansesbank/images/appicon.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        this.setIconImage(icon.getImage());
+        
         updateTable();
     }
 
@@ -110,6 +116,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         deletebutton = new javax.swing.JButton();
         filterfield = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         signoutlabel = new javax.swing.JButton();
@@ -159,7 +166,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(CEObut);
-        CEObut.setBounds(10, 240, 160, 32);
+        CEObut.setBounds(10, 280, 160, 32);
 
         jButton1.setText("Refresh the table");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +175,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(10, 200, 160, 32);
+        jButton1.setBounds(10, 240, 160, 32);
 
         updatebutton.setText("Update a cutomer");
         updatebutton.addActionListener(new java.awt.event.ActionListener() {
@@ -208,6 +215,15 @@ public class EmployeeFrame extends javax.swing.JFrame {
         jLabel4.setText("Find: ");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(10, 20, 40, 20);
+
+        jButton2.setText("Manage Accounts");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(10, 200, 160, 32);
 
         MainCenterPane.add(jPanel1);
         jPanel1.setBounds(0, 90, 180, 440);
@@ -336,6 +352,18 @@ public class EmployeeFrame extends javax.swing.JFrame {
         exec.setLocationRelativeTo(this);
     }//GEN-LAST:event_CEObutActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                
+        if(jTable1.getSelectedRow()!=-1){
+        int column=0;
+        int row= jTable1.getSelectedRow();
+        int cus= (int)jTable1.getValueAt(row, 0);
+        AccountEdit l = new AccountEdit(null,true,cus);
+        l.setLocationRelativeTo(this);
+        l.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -381,6 +409,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JButton deletebutton;
     private javax.swing.JTextField filterfield;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -47,9 +47,9 @@ public class WansesLogin extends javax.swing.JFrame {
 
     public WansesLogin() {
         initComponents();
-        //URL iconURL = getClass().getResource("/wansesbank/images/appicon.png");
-        //ImageIcon icon = new ImageIcon(iconURL);
-        //this.setIconImage(icon.getImage());
+        URL iconURL = getClass().getResource("/wansesbank/images/appicon.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        this.setIconImage(icon.getImage());
     }
 
     @SuppressWarnings("unchecked")
