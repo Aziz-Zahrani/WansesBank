@@ -37,7 +37,7 @@ public class WansesFrame extends javax.swing.JFrame {
     String[] fullnamearray;
     private static  final String USERNAME= "wansesco_wans";
     private static final String PASSWORD= "xzMAsW1WQ8Lg";
-    private static final String CONN_STRING= "jdbc:mysql://wanses.com:3306/wansesco_wanses";
+    private static final String CONN_STRING= "jdbc:mysql://172.105.47.42:3306/wansesco_wanses";
     
     public void retrieveUser(){
                 try (

@@ -29,7 +29,7 @@ public class WansesLogin extends javax.swing.JFrame {
      */
     private static  final String USERNAME= "wansesco_wans";
     private static final String PASSWORD= "xzMAsW1WQ8Lg";
-    private static final String CONN_STRING= "jdbc:mysql://wanses.com:3306/wansesco_wanses";
+    private static final String CONN_STRING= "jdbc:mysql://172.105.47.42:3306/wansesco_wanses";
     private final String char_list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_";
     int mouseX, mouseY;
     public StringBuilder PasswordGen(){
@@ -189,7 +189,6 @@ public class WansesLogin extends javax.swing.JFrame {
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setFocusable(false);
-        jButton2.setOpaque(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
